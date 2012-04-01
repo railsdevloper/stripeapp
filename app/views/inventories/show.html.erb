@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 <title>Contents</title>
@@ -30,48 +31,41 @@
   </div>
   <div class="content">
     <div class="block">
-      <%=form_for @inventory, :html => { :multipart => true } do |f|%>
-        <% if @inventory.errors.any? %>
-        <div id="errorExplanation">
-          <h2><%= pluralize(@inventory.errors.count, "error") %> prohibited
-              this post from being saved:</h2>
-          <ul>
-          <% @inventory.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
-        <% end %>
+      <h2>Item Details <span class="heading_nav"><%=link_to 'Edit', edit_inventory_path(@inventory)%></span></h2>
         <dl>
           <dt>Item Name</dt>
-          <dd><%= f.text_field :item_name %></dd>
+          <dd><%= @inventory.item_name%></dd>
           <dt>Room</dt>
-          <dd>
-            <%= f.select("room", ["kitchen", "kitchen"])%>
-          </dd>
+          <dd><%=@inventory.room%></dd>
           <dt>Local Location</dt>
-          <dd>
-            <%= f.select("local_location_1", ["Box", "Stand-alone"])%>
-            <dd><%= f.text_field :local_location %></dd>
-          </dd>
+          <dd><%=@inventory.local_location_1%>-<%=@inventory.local_location%></dd>
           <dt>Global Location</dt>
-          <dd>
-            <%= f.select("global_location_1", ["Box", "Stand-alone"])%>
-            <dd><%= f.text_field :global_location %></dd>
-          </dd>
+          <dd><%=@inventory.global_location_1%>-<%=@inventory.global_location%></dd>
           <dt>Condition</dt>
-          <dd>
-            <%= f.select("condition", ["Cleanable", "Salvageable", "Total Loss"])%>
-          </dd>
+          <dd><%=@inventory.condition%></dd>
           <dt>Notes</dt>
-          <dd><%= f.text_area :notes, :cols => 40, :rows => 05 %></dd>
+          <dd><%=@inventory.notes%></dd>
           <dt>Packout Image</dt>
-          <dd><%= f.file_field :avatar %></dd>
-          <dt></dt>
-          <%= hidden_field_tag "job_id", "#{@job.id}" if @job.present?%>
-          <dd><%= f.submit %></dd>
+          <dd><%= image_tag(@inventory.avatar.url(:thumb)) %></dd>
+          <!--<dt>Packback Image</dt>
+          <dd><input type="file"></dd>-->
         </dl>
-      <% end %>
+      <h2>Status</h2>
+        <dl>
+          <dt>February 10, 2012</dt>
+          <dd>Packout</dd>
+          <dt>Status</dt>
+          <dd>
+            <select>
+              <option>Packout</option>
+              <option>Inspection</option>
+              <option>Processing</option>
+              <option>Packback</option>
+              <option>Returned</option>
+              <option>Disposed</option>
+            </select>
+            <input type="submit" value="Update Status">
+        </dl>
     </div>
   </div>
 </div>

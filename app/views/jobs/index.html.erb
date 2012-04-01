@@ -1,2 +1,104 @@
-<h1>This section is to show all jobs</h1>
-<h1><%= link_to "Create new jobs", new_job_path %></h1>
+<html>
+<head>
+<title>Jobs</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+<link rel="stylesheet" href="stylesheet.css" type="text/css" media="screen" />
+</head>
+  
+  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="images/logo_.png">
+      </div>
+      <div class="navigation">
+        <ul>
+          <li style="float:right"><%= link_to "Add New Job", new_job_path%></li>  
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<div class="wrapper paper">
+
+<div class="main">
+  <div class="sidebar">
+    <div class="block">
+      <p>Steve Jobs<br>
+         1 Infinite Loop<br>
+         Cupertino, CA 90000<br>
+         310-555-5555
+      </p>
+    </div>
+    <div class="block">
+      <h3>Condition</h3>
+      <ul>
+        <li><a href="#">All</a></li>
+        <li><a href="#">Cleanable</a></li>
+        <li><a href="#">Salvageable</a></li>
+        <li><a href="#">Total Loss</a></li>
+      </ul>
+    </div>
+    <div class="block">
+      <h3>Status</h3>
+      <ul>
+        <li><a href="#">All</a></li>
+        <li><a href="#">Packout</a></li>
+        <li><a href="#">Inspection</a></li>
+        <li><a href="#">Packback</a></li>
+        <li><a href="#">Returned</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="content">
+    <div class="block">
+      <table border="2">
+        <tr>
+          <th>Customer Name</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Zip Code</th>
+          <th>Phone Number</th>
+          <th>Email</th>
+          <th>Insurance Company</th>
+          <th>Adjuster</th>
+          <th>Claim Number</th>
+        </tr>
+        <% @jobs.each do |job| %>
+          <tr>
+            <td><%= job.customer_name%></td>
+            <td><%= job.address%></td>
+            <td><%= job.city%></td>
+            <td><%= job.state%></td>
+            <td><%= job.zip_code%></td>
+            <td><%= job.phone%></td>
+            <td><%= job.email%></td>
+            <td><%= job.insurance_company%></td>
+            <td><%= job.adjuster%></td>
+            <td><%= job.claim_number%></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/terms">Terms</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><img src="images/logo_footer_jlinshirt.png"></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/twitter">Twitter</a></li>
+    <li><a href="/facebook">Facebook</a></li>
+  </ul>
+</div>
+
+</body>
+</html>

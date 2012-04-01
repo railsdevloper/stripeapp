@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+  layout "form"
 
   def index
     @jobs = Job.all
@@ -12,7 +13,8 @@ class JobsController < ApplicationController
   def create
     @job = Job.create(params[:job])
     if @job.save
-      redirect_to job_path(@job) 
+#      redirect_to 
+      redirect_to "/jobs/#{@job.customer_name}/inventory" 
     else
      render :action => "new"
     end

@@ -3,7 +3,6 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
- *= require_tree .
 */
 
 html, body {
@@ -16,10 +15,10 @@ a img {
   border: none;
 }
 
-a {
-  color: #0000FF;
-  text-decoration: none;
-}
+/*a {*/
+/*  color: #0000FF;*/
+/*  text-decoration: none;*/
+/*}*/
 
 a:hover {
   text-decoration: underline;
@@ -93,4 +92,29 @@ form .field, form .actions {
 
 .error_messages ul {
   margin: 15px 0;
+}
+
+.footer {
+	margin: 0 auto 40px;
+	overflow: hidden;
+	text-align: center;
+	width: 740px;
+}
+
+.footer a {
+	color: #777777;
+}
+
+.footer p {
+	color: #777777;
+	float: left;
+}
+
+.footer li {
+	display: inline;
+	margin: 0 20px;
+}
+
+.footer img {
+	vertical-align: middle;
 }

@@ -1,34 +1,105 @@
-<%= form_for @job do |f|%>
-  <% if @job.errors.any? %>
-  <div id="errorExplanation">
-    <h2><%= pluralize(@job.errors.count, "error") %> prohibited
-        this post from being saved:</h2>
-    <ul>
-    <% @job.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contents</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+<link rel="stylesheet" href="stylesheet.css" type="text/css" media="screen" />
+</head>
+
+<body>
+  
+  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="images/logo_.png">
+      </div>
+      <div class="navigation">
+        <ul>
+          
+        </ul>
+      </div>
+    </div>
   </div>
-  <% end %>
-  <%= f.label :customer_name, 'Customer Name'%>
-  <%= f.text_field :customer_name %>
-  <%= f.label :address, 'Address'%>
-  <%= f.text_field :address%>
-  <%= f.label :state%>
-  <%= f.select :state, options_for_select(['Ohio'])%>
-  <%= f.label :city%>
-  <%= f.text_field :city%>
-  <%= f.label :zip_code, "Zip Code"%>
-  <%= f.text_field :zip_code%>
-  <%= f.label :phone, 'Phone Number'%>
-  <%= f.text_field :phone %>
-  <%= f.label :email, "Email Id"%>
-  <%= f.text_field :email %>
-  <%= f.label :insurance_company, 'Insurance Company'%>
-  <%= f.select :insurance_company, options_for_select(['State Farm Insurance'])%>
-  <%= f.label :adjuster, 'Adjuster'%>
-  <%= f.select :adjuster, options_for_select(['Steve Jobs'])%>
-  <%= f.label :claim_number, 'Claim Number'%>
-  <%= f.text_field :claim_number%></br>
-  <%= f.submit%>
-<%end%>
+
+<div class="wrapper paper">
+
+<div class="main">
+  <div class="sidebar">
+    <div class="block">
+      <ul>
+        <li><a href="#">Create New Job</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="content">
+    <div class="block">
+      <%= form_for @job do |f|%>
+        <% if @job.errors.any? %>
+        <div id="errorExplanation">
+          <h2><%= pluralize(@job.errors.count, "error") %> prohibited
+              this post from being saved:</h2>
+          <ul>
+          <% @job.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+        <% end %>
+        <h2>Customer Information</h2>
+        <dl>
+          <dt>Customer Name</dt>
+          <dd><%= f.text_field :customer_name %></dd>
+          <dt>Address</dt>
+          <dd><%= f.text_field :address%></dd>
+          <dt>City</dt>
+          <dd><%= f.text_field :city%></dd>
+          <dt>State</dt>
+          <dd>
+          <%= f.select :state, options_for_select(['Ohio'])%>
+          </dd>
+          <dt>Zip Code</dt>
+          <dd><%= f.text_field :zip_code%></dd>
+          <dt>Phone Number</dt>
+          <dd><%= f.text_field :phone %></dd>
+          <dt>Email Address</dt>
+          <dd><%= f.text_field :email %></dd>
+        </dl>
+        <h2>Claim Information</h2>
+        <dt>Insurance Company</dt>
+        <dd>
+          <%= f.select :insurance_company, options_for_select(['State Farm Insurance'])%>
+          <span class="form_details"><a href="#">Add New</a><input type="text"><input type="submit" value="Add"></span>
+        </dd>
+        <dt>Adjuster</dt>
+        <dd>
+        <%= f.select :adjuster, options_for_select(['Steve Jobs'])%>
+          <span class="form_details"><a href="#">Add New</a><input type="text"><input type="submit" value="Add"></span>
+        </dd>
+        <dt>Claim Number</dt>
+        <dd><%= f.text_field :claim_number%></dd>
+        <dt></dt>
+        <dd><%= f.submit%>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/terms">Terms</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><img src="images/logo_footer_jlinshirt.png"></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/twitter">Twitter</a></li>
+    <li><a href="/facebook">Facebook</a></li>
+  </ul>
+</div>
+
+</body>
+</html>

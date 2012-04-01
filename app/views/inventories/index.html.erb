@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contents</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+<link rel="stylesheet" href="stylesheet.css" type="text/css" media="screen" />
+</head>
+
+<body>
+  
+  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="images/logo_.png">
+      </div>
+      <div class="navigation">
+        <ul>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<div class="wrapper paper">
+
+<div class="main">
+  <div class="sidebar">
+    <div class="block">
+      <p>Steve Jobs<br>
+         1 Infinite Loop<br>
+         Cupertino, CA 90000<br>
+         310-555-5555
+      </p>
+    </div>
+    <div class="block">
+      <h3>Condition</h3>
+      <ul>
+        <li><a href="#">All</a></li>
+        <li><a href="#">Cleanable</a></li>
+        <li><a href="#">Salvageable</a></li>
+        <li><a href="#">Total Loss</a></li>
+      </ul>
+    </div>
+    <div class="block">
+      <h3>Status</h3>
+      <ul>
+        <li><a href="#">All</a></li>
+        <li><a href="#">Packout</a></li>
+        <li><a href="#">Inspection</a></li>
+        <li><a href="#">Packback</a></li>
+        <li><a href="#">Returned</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="content">
+    <div class="block">
+      <table border="2">
+        <tr>
+          <th>Item Name</th>
+          <th>Room</th>
+          <th>Local Location</th>
+          <th>Global Location</th>
+          <th>Condition</th>
+          <!--<th>Status</th>-->
+          <th>Image</th>
+        </tr>
+        <% @inventories.each do |inventory| %>
+          <tr>
+            <td><%= inventory.item_name%></td>
+            <td><%= inventory.room%></td>
+            <td><%= inventory.local_location_1%>-<%=inventory.local_location%></td>
+            <td><%= inventory.global_location_1%>-<%=inventory.global_location%></td>
+            <td><%= inventory.condition%></td>
+            <td><%= image_tag(inventory.avatar.url(:thumb)) %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/terms">Terms</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><img src="images/logo_footer_jlinshirt.png"></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/twitter">Twitter</a></li>
+    <li><a href="/facebook">Facebook</a></li>
+  </ul>
+</div>
+
+</body>
+</html>

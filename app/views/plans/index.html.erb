@@ -1,5 +1,18 @@
+<div class="header">
+  <div class="container">
+    <div class="logo">
+      <img src="images/logo_.png">
+    </div>
+    <div class="navigation"
+      <ul> 
+        <li style="float:right"><%= link_to "JOBS", jobs_path%></li>  
+      </ul>
+    </div>
+  </div>
+</div> 
+
 <div id="plans">
-  <h1>All Plans</h1>
+  <h2>All plans:</h2>
   <% @plans.each do |plan| %>
     <div class="plan">
       <div class="name"><%= plan.name %></div>

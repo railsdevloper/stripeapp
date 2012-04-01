@@ -6,7 +6,7 @@ class CreateJobs < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.string :zip_code
-      t.integer :phone
+      t.text :phone
       t.string :email
       t.string :insurance_company
       t.string :adjuster
