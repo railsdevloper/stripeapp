@@ -1,4 +1,15 @@
 <%= form_for @job do |f|%>
+  <% if @job.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@job.errors.count, "error") %> prohibited
+        this post from being saved:</h2>
+    <ul>
+    <% @job.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
   <%= f.label :name%>
   <%= f.text_field :name%>
   <%= f.label :job_detail%>
