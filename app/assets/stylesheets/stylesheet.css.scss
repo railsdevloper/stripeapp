@@ -1,0 +1,424 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  border: 0 none;
+  color: #222222;
+  font-family: inherit;
+  font-size: 100%;
+  font-style: inherit;
+  font-weight: inherit;
+  margin: 0;
+  outline: 0 none;
+  padding: 0;
+  vertical-align: baseline; }
+
+body {
+  background: #efefef;
+  font-family: Helvetica, Arial;
+  font-size: 12px; }
+
+a {
+  color: #7a93ff;
+  text-decoration: none; }
+
+h1 {
+  display: inline;
+  float: left;
+  font-size: 28px;
+  margin: 0 0 20px 0;
+  a:hover {
+    background: #212121;
+    color: #ffffff; } }
+
+h2 {
+  border-bottom: 1px solid #ececec;
+  clear: both;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  padding: 0 0 5px 0; }
+
+p {
+  line-height: 1.6; }
+
+li {
+  list-style-type: none; }
+
+label.checkbox {
+  width: auto; }
+
+sup {
+  font-size: 0.6em;
+  vertical-align: text-top; }
+
+strong {
+  font-weight: bold; }
+
+dl {
+  margin: 0 0 20px 0;
+  overflow: hidden;
+  &:last-child {
+    margin: 0; } }
+
+dt {
+  clear: both;
+  float: left;
+  margin: 0 10px 10px 0;
+  width: 110px; }
+
+dd {
+  float: left;
+  margin: 0 0 10px 0; }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  &.narrow {
+    clear: both;
+    float: left;
+    width: 300px; } }
+
+th {
+  font-weight: bold;
+  padding: 3px;
+  text-align: left; }
+
+td {
+  padding: 3px;
+  &.total_text {
+    font-weight: bold;
+    text-align: right; }
+  &.total_amount {
+    font-weight: bold; } }
+
+.wrapper {
+  padding: 20px;
+  width: 700px; }
+
+.container {
+  margin: 0 auto;
+  overflow: hidden; }
+
+.last {
+  margin: 0 0 20px 0; }
+
+.paper {
+  display: block;
+  position: relative;
+  background: #fff;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.8);
+  xtext-shadow: 0 1px 0 #fff;
+  line-height: 1.5;
+  display: block;
+  border: 1px #ddd solid;
+  border-top: none;
+  margin: 20px auto;
+  box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.33);
+  -moz-box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.33);
+  -webkit-box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.33);
+  &:before {
+    z-index: -1;
+    position: absolute;
+    content: "";
+    bottom: 15px;
+    left: 10px;
+    width: 50%;
+    top: 95%;
+    max-width: 300px;
+    background: rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 15px 10px rgba(0, 0, 0, 0.4);
+    -webkit-transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+    -o-transform: rotate(-3deg); }
+  &:after {
+    z-index: -1;
+    position: absolute;
+    content: "";
+    bottom: 15px;
+    left: 10px;
+    width: 50%;
+    top: 95%;
+    max-width: 300px;
+    background: rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 15px 10px rgba(0, 0, 0, 0.4);
+    -webkit-transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+    -o-transform: rotate(-3deg);
+    -webkit-transform: rotate(3deg);
+    -moz-transform: rotate(3deg);
+    -o-transform: rotate(3deg);
+    right: 10px;
+    left: auto; } }
+
+.header {
+  margin: 40px auto 20px;
+  padding: 0;
+  overflow: hidden;
+  width: 740px; }
+
+.logo {
+  float: left; }
+
+.navigation {
+  float: right;
+  margin: 4px 0 0 0;
+  img {
+    margin: 0 0 0 20px;
+    vertical-align: middle; }
+  li {
+    display: inline;
+    margin: 0 0 0 20px; } }
+
+.cart-stats {
+  background: #ac3a3a;
+  border-radius: 0 4px 4px 0;
+  margin: 5px 0 0 0;
+  a {
+    color: #ffffff; } }
+
+.logo {
+  float: left; }
+
+.heading {
+  border-bottom: 1px solid #e6e6e6;
+  border-top: 1px solid #e6e6e6;
+  line-height: auto;
+  overflow: hidden;
+  h1 {
+    display: inline;
+    float: left;
+    font-size: 24px;
+    margin: 0 20px 0 0; }
+  ul {
+    float: left;
+    padding: 20px;
+    text-align: center; }
+  li {
+    display: inline;
+    font-size: 13px;
+    margin: 0 15px 0 0;
+    &.last {
+      margin: 0; }
+    &.time {
+      color: #999999;
+      font-size: 10px; } }
+  a {
+    color: #7995ff;
+    font-size: 14px; } }
+
+.content {
+  margin: 0;
+  overflow: hidden;
+  a {
+    color: #7a93ff; } }
+
+.content_block_profile {
+  float: left;
+  margin: 0 20px 20px 0;
+  width: 300px; }
+
+.content_block_address {
+  float: left;
+  margin: 0 20px 20px 0;
+  width: 180px; }
+
+.content_block_payment_info {
+  float: left;
+  margin: 0 0 20px 0;
+  width: 180px; }
+
+.content_block_profile h2, .content_block_address h2, .content_block_payment_info h2, .content_block_full h2, .content_block_update_email h2, .content_block_change_password h2, .content_block_left h2, .content_block_right h2 {
+  background: #efefef;
+  margin: 10px 0;
+  padding: 2px 3px; }
+
+.content_block_full {
+  clear: both; }
+
+.content_block_left {
+  float: left;
+  margin: 0 20px 0 0;
+  width: 340px; }
+
+.content_block_right {
+  float: left;
+  margin: 0 0 0 0;
+  width: 340px; }
+
+.sidebar {
+  background: #f5f5f5;
+  float: left;
+  margin: 0 20px 0 0;
+  padding: 20px;
+  .block {
+    margin: 0 0 20px 0;
+    &:last-child {
+      margin: 0; } }
+  h3 {
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    text-transform: uppercase; }
+  li {
+    border-bottom: 1px solid #eeeeee;
+    margin: 0 0 5px 0;
+    padding: 0 0 5px 0; } }
+
+.form_details {
+  margin: 0 0 0 10px; }
+
+.heading_nav {
+  float: right;
+  font-size: 12px;
+  font-weight: normal; }
+
+.notice {
+  font-size: 14px;
+  margin: 0 0 20px 0; }
+
+.email {
+  font-size: 14px;
+  margin: 0 0 0 10px;
+  vertical-align: middle; }
+
+.subnavigation {
+  display: inline;
+  float: right;
+  margin: 19px 20px 0 0;
+  a {
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    color: #ffffff;
+    padding: 2px 4px;
+    &.active {
+      background: #ffffff;
+      color: #b33131; } }
+  li {
+    display: inline;
+    margin: 0 0 0 20px; } }
+
+.product_image {
+  float: left; }
+
+.product_details {
+  float: right;
+  ul {
+    overflow: hidden; } }
+
+.select_month {
+  float: right;
+  margin: 0 20px 0 0;
+  padding: 0;
+  li {
+    display: inline;
+    margin: 0 5px 0 0; } }
+
+.order_status {
+  margin: 0 0 10px 0; }
+
+.charge_subscribers {
+  display: inline;
+  float: right;
+  margin: 0;
+  padding: 0; }
+
+.sidebar_block {
+  a {
+    background: #31b8da;
+    color: #ffffff;
+    padding: 7px; }
+  li {
+    font-size: 18px;
+    margin: 0 0 15px 0;
+    text-align: right; } }
+
+.page_heading {
+  background: #b33131;
+  border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  -webkit-border-radius: 3px 3px 0 0;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 700px;
+  h1 {
+    color: #ffffff;
+    margin: 0;
+    padding: 10px;
+    text-shadow: 0 1px 0 #a12424; } }
+
+.main {
+  background: #ffffff;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 700px; }
+
+.main_block {
+  margin: 0 0 20px 0; }
+
+.form_field {
+  float: left;
+  margin: 0 0 10px 0;
+  p {
+    margin: 5px 0; } }
+
+.form_field_name {
+  clear: both;
+  float: left;
+  margin: 0 10px 10px 0;
+  padding: 2px 0 0 0;
+  text-align: right;
+  width: 100px; }
+
+.form_note {
+  color: #888888;
+  font-size: 12px;
+  margin: 0 0 10px 0; }
+
+.dashboard_block {
+  background: #efefef;
+  float: left;
+  font-size: 18px;
+  margin: 0 20px 20px 0;
+  overflow: hidden;
+  padding: 20px;
+  text-align: center;
+  width: 300px;
+  &:last-child {
+    margin: 0; }
+  p {
+    color: #888888;
+    font-size: 12px;
+    margin: 0 0 10px 0;
+    text-transform: uppercase; }
+  h1 {
+    text-align: center; } }
+
+.up {
+  color: #77ab13;
+  font-size: 12px;
+  vertical-align: center; }
+
+.down {
+  color: #ae432e;
+  font-size: 12px;
+  vertical-align: text-bottom; }
+
+.footer {
+  margin: 0 auto 40px;
+  overflow: hidden;
+  text-align: center;
+  width: 740px;
+  a {
+    color: #777777; }
+  p {
+    color: #777777;
+    float: left; }
+  li {
+    display: inline;
+    margin: 0 20px; }
+  img {
+    vertical-align: middle; } }
