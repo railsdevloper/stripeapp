@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Contents</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+<link rel="stylesheet" href="stylesheet.css" type="text/css" media="screen" />
+</head>
+
+<body>
+  
+  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="images/logo_.png">
+      </div>
+      <div class="navigation">
+        <ul>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<div class="wrapper paper">
+
+<div class="main">
+  <div class="sidebar">
+    
+  </div>
+  <div class="content">
+    <div class="block">
+      <%=form_for @inventory, :html => { :multipart => true } do |f|%>
+        <dl>
+          <dt>Item Name</dt>
+          <dd><%= f.text_field :item_name %></dd>
+          <dt>Room</dt>
+          <dd>
+            <%= f.select("room", ["kitchen", "kitchen"])%>
+          </dd>
+          <dt>Local Location</dt>
+          <dd>
+            <%= f.select("local_location_1", ["Box", "Stand-alone"])%>
+            <dd><%= f.text_field :local_location %></dd>
+          </dd>
+          <dt>Global Location</dt>
+          <dd>
+            <%= f.select("global_location_1", ["Box", "Stand-alone"])%>
+            <dd><%= f.text_field :global_location %></dd>
+          </dd>
+          <dt>Condition</dt>
+          <dd>
+            <%= f.select("condition", ["Cleanable", "Salvageable", "Total Loss"])%>
+          </dd>
+          <dt>Notes</dt>
+          <dd><%= f.text_area :notes %></dd>
+          <dt>Packout Image</dt>
+          <dd><%= f.file_field :avatar %></dd>
+          <dt></dt>
+          <dd><%= f.submit %></dd>
+        </dl>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/terms">Terms</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><img src="images/logo_footer_jlinshirt.png"></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/twitter">Twitter</a></li>
+    <li><a href="/facebook">Facebook</a></li>
+  </ul>
+</div>
+
+</body>
+</html>
