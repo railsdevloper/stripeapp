@@ -7,7 +7,19 @@
   <%= csrf_meta_tags %>
   <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
 </head>
-<body>
+<body>	
+  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="images/logo_.png">
+      </div>
+      <div class="navigation"
+        <ul> 
+          <li><%= link_to "JOBS", jobs_path%></li>  
+        </ul>
+      </div>
+    </div>
+  </div>
   <div id="container">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
