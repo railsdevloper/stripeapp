@@ -10,9 +10,25 @@
     </ul>
   </div>
   <% end %>
-  <%= f.label :name%>
-  <%= f.text_field :name%>
-  <%= f.label :job_detail%>
-  <%= f.text_area :job_detail%></br>
+  <%= f.label :customer_name, 'Customer Name'%>
+  <%= f.text_field :customer_name %>
+  <%= f.label :address, 'Address'%>
+  <%= f.text_field :address%>
+  <%= f.label :state%>
+  <%= f.select :state, options_for_select(['Ohio'])%>
+  <%= f.label :city%>
+  <%= f.text_field :city%>
+  <%= f.label :zip_code, "Zip Code"%>
+  <%= f.text_field :zip_code%>
+  <%= f.label :phone, 'Phone Number'%>
+  <%= f.text_field :phone %>
+  <%= f.label :email, "Email Id"%>
+  <%= f.text_field :email %>
+  <%= f.label :insurance_company, 'Insurance Company'%>
+  <%= f.select :insurance_company, options_for_select(['State Farm Insurance'])%>
+  <%= f.label :adjuster, 'Adjuster'%>
+  <%= f.select :adjuster, options_for_select(['Steve Jobs'])%>
+  <%= f.label :claim_number, 'Claim Number'%>
+  <%= f.text_field :claim_number%></br>
   <%= f.submit%>
 <%end%>
