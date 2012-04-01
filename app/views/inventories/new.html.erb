@@ -53,7 +53,7 @@
             <%= f.select("condition", ["Cleanable", "Salvageable", "Total Loss"])%>
           </dd>
           <dt>Notes</dt>
-          <dd><%= f.text_area :notes %></dd>
+          <dd><%= f.text_area :notes, :cols => 40, :rows => 05 %></dd>
           <dt>Packout Image</dt>
           <dd><%= f.file_field :avatar %></dd>
           <dt></dt>
