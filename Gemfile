@@ -19,3 +19,4 @@ gem 'jquery-rails'
 
 gem 'stripe'
 gem "paperclip", "~> 2.0"
+gem 'devise'

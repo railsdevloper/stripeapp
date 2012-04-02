@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Plans</title>
+  <%= stylesheet_link_tag "application", "signup" %>
+  <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>
+  <%= csrf_meta_tags %>
+  <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
+</head>
+<body>	
+<!--  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="images/logo_.png">
+      </div>
+      <div class="navigation"
+        <ul> 
+          <li><%= link_to "JOBS", jobs_path%></li>  
+        </ul>
+      </div>
+    </div>
+  </div> 
+-->
+  <div id="container">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    <% end %>
+    <%= yield %>
+  </div>
+<div class="footer">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/terms">Terms</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><img src="images/logo_footer_jlinshirt.png"></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/twitter">Twitter</a></li>
+    <li><a href="/facebook">Facebook</a></li>
+  </ul>
+</div>
+</body>
+</html>

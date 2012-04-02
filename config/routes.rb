@@ -1,4 +1,6 @@
 Saas::Application.routes.draw do
+  devise_for :subscriptions, :controllers => {:registrations => "subscriptions"}
+
   root to: 'plans#index'
   resources :subscriptions
   resources :plans

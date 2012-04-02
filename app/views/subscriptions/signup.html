@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 <title>Contents</title>
@@ -26,60 +27,55 @@
 
 <div class="main">
   <div class="content">
-    <%= form_for(@subscription, :url => registration_path(@subscription)) do |f| %>
-      <% if @subscription.errors.any? %>
-        <div class="error_messages">
-          <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
-          <ul>
-          <% @subscription.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
-      <%= f.hidden_field :plan_id %>
-
-      <%= f.hidden_field :stripe_card_token %>
+    <form>
       <fieldset>
         <h2>Account Information</h2>
         <dl>
-          <dt><%= f.label :email %></dt>
-          <dd><%= f.email_field :email %></dd>
-          <dt><%= f.label :password %></dt>
-          <dd><%= f.password_field :password, :size => 30, :autocomplete => 'off', :class => "password"%></dd>
-          <dt><%= f.label :password_confirmation %></dt>
-          <dd><%= f.password_field :password_confirmation %></div></dd>
+          <dt><label>Email Address</label></dt>
+          <dd><input type="text"></dd>
+          <dt><label>Password</label></dt>
+          <dd><%== f.password_field :password, :size => 30, :autocomplete => 'off', :class => "password"%><input type="text"></dd>
+          <dt><label>Password Again</label></dt>
+          <dd><input type="text"></dd>
         </dl>
       </fieldset>
       <fieldset>
         <h2>Profile Information</h2>
         <dl>
           <dt><label>First Name</label></dt>
-          <dd><%= f.text_field :first_name %></dd>
+          <dd><input type="text"></dd>
           <dt><label>Last Name</label></dt>
-          <dd><%= f.text_field :last_name %></dd>
+          <dd><input type="text"></dd>
           <dt><label>Position</label></dt>
           <dd>
-            <%= f.select :position, options_for_select(['Executive','Manager','Marketer'])%>
+            <select>
+              <option>Executive</option>
+              <option>Manager</option>
+              <option>Marketer</option>
+            </select>
           </dd>
           <dt><label>Company</label></dt>
-          <dd><%= f.text_field :company %></dd>
+          <dd><input type="text"></dd>
           <dt><label>Company Address</label></dt>
-          <dd><%= f.text_field :company_addr %></dd>
+          <dd><input type="text"></dd>
           <dt><label>City</label></dt>
-          <dd><%= f.text_field :city %></dd>
+          <dd><input type="text"></dd>
           <dt><label>State</label></dt>
           <dd>
-            <%= f.select :state, options_for_select(['Ohio'])%>
+            <select>
+              <option>Ohio</option>
+            </select>
           </dd>
           <dt><label>Zip Code</label></dt>
-          <dd><%= f.text_field :zip_code %></dd>
+          <dd><input type="text"></dd>
           <dt><label>Country</label></dt>
           <dd>
-            <%= f.select :state, options_for_select(['United States'])%>
+            <select>
+              <option>United States</option>
+            </select>
           </dd>
           <dt><label>Phone Number</label></dt>
-          <dd><%= f.text_field :phone_no %></dd>
+          <dd><input type="text"></dd>
         </dl>
       </fieldset>
       <fieldset>
@@ -88,19 +84,25 @@
           <dt><label>Name on Card</label></dt>
           <dd><input type="text"></dd>
           <dt><label>Card Number</label></dt>
-          <dd><%= text_field_tag :card_number, nil, name: nil %></dd>
-          <dt><%= label_tag :card_month, "Expiration Date" %></dt>
+          <dd><input type="text"></dd>
+          <dt><label>Expiration Date</label></dt>
           <dd>
-          <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
-          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+            <select>
+              <option>January</option>
+            </select>
+            <select>
+              <option>2012</option>
+            </select>
           </dd>
-          <dt><%= label_tag :card_code, "Security Code on Card (CVV)" %></dt>
-          <dd><%= text_field_tag :card_code, nil, name: nil %></dd>
+          <dt><label>CVC</label></dt>
+          <dd><input type="text"></dd>
+          <dt><label>Zip Code</label></dt>
+          <dd><input type="text"></dd>
           <dt></dt>
-          <dd><%= f.submit "Sign Up Now" %></dd>
+          <dd><input type="submit" value="Sign Up Now"></dd>
         </dl>
       </fieldset>
-    <% end %>
+    </form>
   </div>
 </div>
 

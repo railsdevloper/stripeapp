@@ -1,4 +1,7 @@
 class SubscriptionsController < ApplicationController
+  
+  layout 'signup', :only => [:new]
+
   def new
     plan = Plan.find(params[:plan_id])
     @subscription = plan.subscriptions.build
