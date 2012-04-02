@@ -1,47 +1,81 @@
 <h1>Signing up for "<%= @subscription.plan.name %>"</h1>
 <p>Includes <strong>All Benifits</strong> for only <strong><%= number_to_currency @subscription.plan.price %></strong> per month!</p>
-
-<%= form_for @subscription do |f| %>
-  <% if @subscription.errors.any? %>
-    <div class="error_messages">
-      <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
-      <ul>
-      <% @subscription.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<div class="wrapper paper">
+  <div class="main">
+    <div class="content">
+    <%= form_for @subscription do |f| %>
+      <% if @subscription.errors.any? %>
+        <div class="error_messages">
+          <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+          <ul>
+          <% @subscription.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <%= f.hidden_field :plan_id %>
+      <%= f.hidden_field :plan_id %>
 
-  <%= f.hidden_field :stripe_card_token %>
-
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  <% if @subscription.stripe_card_token.present? %>
-    Credit card has been provided.
-  <% else %>
-    <div class="field">
-      <%= label_tag :card_number, "Credit Card Number" %>
-      <%= text_field_tag :card_number, nil, name: nil %>
-    </div>
-    <div class="field">
-      <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-      <%= text_field_tag :card_code, nil, name: nil %>
-    </div>
-    <div class="field">
-      <%= label_tag :card_month, "Card Expiration" %>
-      <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
-      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
-    </div>
-  <% end %>
-  <div id="stripe_error">
-    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
-  </div>
-  <div class="actions">
-    <%= f.submit "Subscribe" %>
-  </div>
-<% end %>
+      <%= f.hidden_field :stripe_card_token %>
+      <h2>Account Information</h2>
+      <fieldset>
+        <div class="field">
+          <dt><label>Email Address</label></dt>
+          <dd><%= f.text_field :email %></dd>
+          <dt><label>Password</label></dt>
+          <dd><%= f.password_field :password%></dd>
+          <dt><label>Password Again</label></dt>
+          <dd><%= f.password_field :password_confirmation%></dd> 
+        </div>
+      </fieldset>
+      <h2>Profile Information</h2>
+      <fieldset>
+        <dt><label>First Name</label></dt>
+        <dd><%= f.text_field :first_name%></dd>
+        <dt><label>Last Name</label></dt>
+        <dd><%= f.text_field :last_name%></dd>
+        <dt><label>Position</label></dt>
+        <dd><%= f.select :position, options_for_select(['Executive','Manager','Marketer'])%></dd>
+        <dt><label>Company</label></dt>
+        <dd><%= f.text_field :company%></dd>
+        <dt><label>Company Address</label></dt>
+        <dd><%= f.text_field :company_address%></dd>
+        <dt><label>State</label></dt>
+        <dd><%= f.select :state, options_for_select(['Ohio'])%></dd>
+        <dt><label>City</label></dt>
+        <dd><%= f.text_field :city%></dd>
+        <dt><label>Zip Code</label></dt>
+        <dd><%= f.text_field :zip_code%></dd>
+        <dt><label>Country</label></dt>
+        <dd><%= f.select :country, options_for_select(['USA'])%>
+        <dt><label>Phone Number</label></dt>
+        <dd><%= f.text_field :phone%></dd>
+      </fieldset>
+        <h2>Billing Information</h2>
+      <fieldset>
+      <% if @subscription.stripe_card_token.present? %>
+        Credit card has been provided.
+      <% else %>
+        <div class="field">
+          <dt><label>Name on Card</label></dt>
+          <dd><%= text_field_tag :card_number, nil, name: nil %></dd>
+        </div>
+        <div class="field">
+          <dt><label>Card Number</label></dt>
+          <dd><%= text_field_tag :card_code, nil, name: nil %></dd>
+        </div>
+        <div class="field">
+        <dt><label>Expiration Date</label></dt>
+          <dd><%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %></dd>
+          <dd><%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %></dd>
+        </div>
+      <% end %>
+      <div id="stripe_error">
+        <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+      </div>
+      </fieldset>
+      <div class="actions">
+        <%= f.submit "Sign Up Now" %>
+      </div>
+    <% end %>

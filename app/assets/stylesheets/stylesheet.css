@@ -118,9 +118,21 @@ td.total_amount {
 	font-weight: bold;
 }
 
+.narrow .wrapper {
+	width: 400px;
+}
+
+.narrow .header {
+	width: 440px;
+}
+
+.narrow .main {
+	width: 400px;
+}
+
 .wrapper {
 	padding: 20px;
-	width: 700px;
+	width: 840px;
 }
 
 .container {
@@ -179,7 +191,7 @@ td.total_amount {
 	margin: 40px auto 20px;
 	padding: 0;
 	overflow: hidden;
-	width: 740px;
+	width: 860px;
 }
 
 .logo {
