@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contents</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+<link rel="stylesheet" href="stylesheet.css" type="text/css" media="screen" />
+</head>
+
+<body class="narrow">
+  
+  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="images/logo_.png">
+      </div>
+      <div class="navigation">
+        <ul>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<div class="wrapper paper">
+
+<div class="main">
+  <div class="content">
+    <form>
+      <fieldset>
+        <h2>Account Information</h2>
+        <dl>
+          <dt><label>Email Address</label></dt>
+          <dd><input type="text"></dd>
+          <dt><label>Password</label></dt>
+          <dd><%== f.password_field :password, :size => 30, :autocomplete => 'off', :class => "password"%><input type="text"></dd>
+          <dt><label>Password Again</label></dt>
+          <dd><input type="text"></dd>
+        </dl>
+      </fieldset>
+      <fieldset>
+        <h2>Profile Information</h2>
+        <dl>
+          <dt><label>First Name</label></dt>
+          <dd><input type="text"></dd>
+          <dt><label>Last Name</label></dt>
+          <dd><input type="text"></dd>
+          <dt><label>Position</label></dt>
+          <dd>
+            <select>
+              <option>Executive</option>
+              <option>Manager</option>
+              <option>Marketer</option>
+            </select>
+          </dd>
+          <dt><label>Company</label></dt>
+          <dd><input type="text"></dd>
+          <dt><label>Company Address</label></dt>
+          <dd><input type="text"></dd>
+          <dt><label>City</label></dt>
+          <dd><input type="text"></dd>
+          <dt><label>State</label></dt>
+          <dd>
+            <select>
+              <option>Ohio</option>
+            </select>
+          </dd>
+          <dt><label>Zip Code</label></dt>
+          <dd><input type="text"></dd>
+          <dt><label>Country</label></dt>
+          <dd>
+            <select>
+              <option>United States</option>
+            </select>
+          </dd>
+          <dt><label>Phone Number</label></dt>
+          <dd><input type="text"></dd>
+        </dl>
+      </fieldset>
+      <fieldset>
+        <h2>Billing Information</h2>
+        <dl>
+          <dt><label>Name on Card</label></dt>
+          <dd><input type="text"></dd>
+          <dt><label>Card Number</label></dt>
+          <dd><input type="text"></dd>
+          <dt><label>Expiration Date</label></dt>
+          <dd>
+            <select>
+              <option>January</option>
+            </select>
+            <select>
+              <option>2012</option>
+            </select>
+          </dd>
+          <dt><label>CVC</label></dt>
+          <dd><input type="text"></dd>
+          <dt><label>Zip Code</label></dt>
+          <dd><input type="text"></dd>
+          <dt></dt>
+          <dd><input type="submit" value="Sign Up Now"></dd>
+        </dl>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/terms">Terms</a></li>
+    <li><a href="/privacy">Privacy</a></li>
+    <li><img src="images/logo_footer_jlinshirt.png"></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/twitter">Twitter</a></li>
+    <li><a href="/facebook">Facebook</a></li>
+  </ul>
+</div>
+
+</body>
+</html>
