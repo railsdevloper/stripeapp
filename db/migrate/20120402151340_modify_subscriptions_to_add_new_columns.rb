@@ -15,6 +15,5 @@ class ModifySubscriptionsToAddNewColumns < ActiveRecord::Migration
     add_column :subscriptions, :expiration_month, :integer
     add_column :subscriptions, :expiration_year, :integer
     add_column :subscriptions, :card_type, :string
-#    add_column :subscriptions, "encrypted_password", :string, :limit => 128, :default => ""
   end
 end

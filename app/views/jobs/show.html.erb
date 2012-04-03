@@ -1,29 +1,120 @@
-<table border=1>
-  <tr>
-    <td>Customer Name</td>
-    <td>Address</td>
-    <td>City</td>
-    <td>State</td>
-    <td>Zip Code</td>
-    <td>Phone</td>
-    <td>Email</td>
-    <td>Insurance Company</td>
-    <td>Adjuster</td>
-    <td>Claim Number</td>    
-  </tr>
-  <tr>
-    <td><%= @job.customer_name%></td>
-    <td><%= @job.address %></td>
-    <td><%= @job.city%></td>
-    <td><%= @job.state %></td>
-    <td><%= @job.zip_code%></td>
-    <td><%= @job.phone %></td>
-    <td><%= @job.email%></td>
-    <td><%= @job.insurance_company %></td>
-    <td><%= @job.adjuster%></td>
-    <td><%= @job.claim_number %></td>
-  </tr>
-</table>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contents</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+<link rel="stylesheet" href="stylesheet.css" type="text/css" media="screen" />
+</head>
 
+<body>
+  
+  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="images/logo_.png">
+      </div>
+      <div class="navigation">
+        <ul>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-#Add a form for creating inventory
+<div class="wrapper paper">
+
+<div class="main">
+  <div class="sidebar">
+    <div class="block">
+      <h3>Jobs</h3>
+      <ul>
+        <li><a href="#">View All Jobs</a></li>
+        <li><a href="#">Add New Job</a></li>
+      </ul>
+    </div>
+    <div class="block">
+      <h3>Inventory</h3>
+      <ul>
+        <li><a href="#">View Inventory</a></li>
+        <li><a href="#">Add Inventory Item</a></li>
+      </ul>
+    </div>
+    <div class="block">
+      <h3>Status</h3>
+      <dl class="stats">
+        <dt>All</dt>
+        <dd><a href="#">11</a></dd>
+        <dt>Active</dt>
+        <dd><a href="#">4</a></dd>
+        <dt>Inactive</dt>
+        <dd><a href="#">2</a></dd>
+        <dt>On Hold</dt>
+        <dd><a href="#">1</a></dd>
+        <dt>Complete</dt>
+        <dd><a href="#">4</a></dd>
+    </div>
+  </div>
+  <div class="content">
+    <img class="heading" src="images/heading_jobs.png">
+    <div class="breadcrumbs">
+      <ul>
+        <li><a href="#">Dashboard</a><span class="separator">/</span></li>
+        <li><a href="#">Jobs</a><span class="separator">/</span></li>
+        <li><a href="#">Steve Jobs</a></li>
+    </div>
+    <div class="block">
+      <h2>Job Details <span class="heading_nav"><a href="#">Edit</a></span></h2>
+        <dl>
+          <dt>Customer Name</dt>
+          <dd><%= @job.customer_name%></dd>
+          <dt>City</dt>
+          <dd><%= @job.city%></dd>
+          <dt>State</dt>
+          <dd><%= @job.state %></dd>
+          <dt>Zip Code</dt>
+          <dd><%= @job.zip_code%></dd>
+          <dt>Phone Number</dt>
+          <dd><%= @job.phone %></dd>
+          <dt>Email Address</dt>
+          <dd><%= @job.email%></dd>
+        </dl>
+      <h2>Claim Information <span class="heading_nav"><a href="#">Edit</a></span></h2>
+        <dl>
+          <dt>Insurance Company</dt>
+          <dd><%= @job.insurance_company %></dd>
+          <dt>Adjuster</dt>
+          <dd><%= @job.adjuster%></dd>
+          <dt>Claim Number</dt>
+          <dd><%= @job.claim_number %></dd>
+        </dl>
+      <h2>Status</h2>
+        <dl>
+        <%@job.statuses.each do |status| %>
+          <dt><%=status.created_at%></dt>
+          <dd><%=status.name%></dd>
+        <% end %>
+          <dt>Status</dt>
+          <dd>
+            <%= form_tag add_status_job_path(@job) do %>
+              <%=select_tag("job", "statuses", Status.all)%>
+              <%= submit_tag 'Update Status' %>
+            <% end %>
+          </dd>        
+        </dl>
+        <h2>Inventory <span class="heading_nav"><a href="#">View Inventory</a></span></h2>
+          <dl>
+            <%=@job.inventories.each do |inventory|%>
+              <dt><%=inventory.created_at%></dt>
+              <dd><%=inventory.status_name%></dd>
+            <%end%>
+          </dl>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</body>
+</html>
