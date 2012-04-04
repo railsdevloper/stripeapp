@@ -4,8 +4,15 @@ Saas::Application.routes.draw do
   root to: 'plans#index'
   resources :subscriptions
   resources :plans
-  resources :jobs
+
   resources :inventories
+
+  resources :jobs do
+    member do
+      post 'add_status'
+    end
+  end
+
 
   match '/jobs/:customer_name/inventory' => 'inventories#new'
   
