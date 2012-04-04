@@ -7,7 +7,6 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
-    @inventory = @job.inventories.new
   end
 
   def create
@@ -32,7 +31,9 @@ class JobsController < ApplicationController
   end
 
   def add_status
-    
+    JobsStatus.create(:job_id => params[:job_id], :status_id => params[:status])
+    @job = Job.find(params[:job_id])
+    render :action => "show", :locals => {:job => @job}  
   end
 
 

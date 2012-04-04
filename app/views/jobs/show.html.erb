@@ -97,17 +97,17 @@
         <% end %>
           <dt>Status</dt>
           <dd>
-            <%= form_tag add_status_job_path(@job) do %>
-              <%=select_tag("job", "statuses", Status.all)%>
+            <%= form_tag "/add_status/#{@job.id}" do %>
+              <%=select_tag("status", options_from_collection_for_select(Status.all, :id, :name))%>
               <%= submit_tag 'Update Status' %>
             <% end %>
           </dd>        
         </dl>
         <h2>Inventory <span class="heading_nav"><a href="#">View Inventory</a></span></h2>
           <dl>
-            <%=@job.inventories.each do |inventory|%>
+            <% @job.inventories.each do |inventory|%>
               <dt><%=inventory.created_at%></dt>
-              <dd><%=inventory.status_name%></dd>
+              <dd><%=inventory.item_name%></dd>
             <%end%>
           </dl>
     </div>

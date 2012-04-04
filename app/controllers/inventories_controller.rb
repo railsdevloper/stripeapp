@@ -2,8 +2,7 @@ class InventoriesController < ApplicationController
   layout "form"
 
   def index
-    @inventories = Inventory.all
-    
+    @inventories = Inventory.all   
   end
 
   def show    
@@ -37,6 +36,12 @@ class InventoriesController < ApplicationController
 
   def update
     
+  end
+  
+  def add_situation
+    InventoriesSituations.create(:inventory_id => params[:inventory_id], :situation_id => params[:situation])
+    @inventory = Inventory.find(params[:inventory_id])
+    render :action => "show", :locals => {:inventory => @inventory}
   end
 
 end

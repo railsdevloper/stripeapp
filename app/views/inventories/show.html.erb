@@ -47,24 +47,22 @@
           <dd><%=@inventory.notes%></dd>
           <dt>Packout Image</dt>
           <dd><%= image_tag(@inventory.avatar.url(:thumb)) %></dd>
-          <!--<dt>Packback Image</dt>
-          <dd><input type="file"></dd>-->
         </dl>
       <h2>Status</h2>
         <dl>
-          <dt>February 10, 2012</dt>
-          <dd>Packout</dd>
+          <%@inventory.situations.each do |situation| %>
+            <dt><%=situation.created_at%></dt>
+            <dd><%=situation.name%></dd>
+          <% end %>
+          </br>
           <dt>Status</dt>
           <dd>
-            <select>
-              <option>Packout</option>
-              <option>Inspection</option>
-              <option>Processing</option>
-              <option>Packback</option>
-              <option>Returned</option>
-              <option>Disposed</option>
-            </select>
-            <input type="submit" value="Update Status">
+          <dd>
+            <%= form_tag( "/add_situation/#{@inventory.id}", :method => "post") do %>
+              <%=select_tag("situation", options_from_collection_for_select(Situation.all, :id, :name))%>
+              <%= submit_tag 'Update Status' %>
+          </dd> 
+            <%end%>
         </dl>
     </div>
   </div>

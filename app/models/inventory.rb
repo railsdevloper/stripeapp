@@ -6,4 +6,5 @@ class Inventory < ActiveRecord::Base
                                  :thumb => "100x100>" }
   validates :item_name, :presence => true
   belongs_to :job
+  has_and_belongs_to_many :situations
 end

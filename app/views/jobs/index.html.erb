@@ -30,7 +30,7 @@
     <div class="block">
       <h3>Jobs</h3>
       <ul>
-        <li><a href="#">Add New Job</a></li>
+        <li><%= link_to "Add New Job", new_job_path %></li>
       </ul>
     </div>
     <div class="block">
@@ -68,13 +68,13 @@
         </tr>
         <% @jobs.each do |job| %>
           <tr>
-            <td><%= job.created_at%></td>
+            <td><%= link_to job.created_at, job_path(job)%></td>
             <td><%= job.customer_name%></td>
             <td><%= job.address%></td>
             <td><%= job.city%></td>
             <td><%= job.state%></td>
             <td><%= job.phone%></td>
-            <td><%= job.status%></td>
+            <td><%#= job.status%></td>
           </tr>
         <% end %>
       </table>

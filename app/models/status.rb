@@ -1,4 +1,3 @@
-class Status < ActiveRecord::Base
-
-  has_many :jobs
+class Status < ActiveRecord::Base  
+  has_and_belongs_to_many :jobs
 end
