@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contents</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+<link rel="stylesheet" href="stylesheet.css" type="text/css" media="screen" />
+</head>
+
+<body class="narrow">
+  
+  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="images/logo_contentsiq.png">
+      </div>
+      <div class="navigation">
+        <ul>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<div class="wrapper paper">
+
+<div class="main">
+  <div class="content">
+    <img class="heading" src="images/heading_signin.png">
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <fieldset>
+        <dl>
+          <dt><label>Email Address</label></dt>
+          <dd><%= f.email_field :email %></dd>
+          <dt><label>Password</label></dt>
+          <dd><%= f.password_field :password %></dd>
+          <dt></dt>
+          <dd><%= f.submit "Sign In" %></dd>
+        </dl>
+      </fieldset>
+    <% end %>
+  </div>
+</div>
+
+</div>
+
+</body>
+</html>

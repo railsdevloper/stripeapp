@@ -1,6 +1,8 @@
 class SubscriptionsController < ApplicationController
   
-  layout 'signup', :only => [:new]
+  skip_before_filter :authenticate_subscription!, :only => [:create, :new]
+  
+  layout 'signup', :only => [:new, :create]
 
   def new
     plan = Plan.find(params[:plan_id])
