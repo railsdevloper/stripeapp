@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
-  layout "form"
+
+#  layout "form"
 
   def index
     @jobs = Job.all

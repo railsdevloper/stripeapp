@@ -1,5 +1,5 @@
 class InventoriesController < ApplicationController
-  layout "form"
+#  layout "form"
 
   def index
     @inventories = Inventory.all   

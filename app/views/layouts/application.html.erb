@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>All Plans</title>
-  <%= stylesheet_link_tag "application" %>
+  <title>All Plans</title>  
+  <%= stylesheet_link_tag "stylesheet" %>
   <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>
   <%= csrf_meta_tags %>
   <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
+  <%= yield :head %>
 </head>
 <body>	
-  <div class="navigation"
+  <div class="navigation">
     <ul> 
       <% if subscription_signed_in? %>
-        <li style="float:right"><%= link_to 'Sign out', destroy_subscription_session_path, :method => :delete %><br /></li> 
+        <li style="float:right"><%= link_to image_tag('nav_signout.png'), destroy_subscription_session_path, :method => :delete %><br /></li> 
       <% else %> 
-        <li style="float:right"><%= link_to "Sign in", new_session_path(resource_name) %><br /></li> 
+        <li style="float:right"><%= link_to image_tag('heading_signin.png'), new_session_path(resource_name) %><br /></li> 
       <%end%>
     </ul>
   </div>
-<!--  <div class="header">
+
+<% if subscription_signed_in? %>
+  <div class="header">
     <div class="container">
       <div class="logo">
         <img src="images/logo_.png">
       </div>
-      <div class="navigation"
+      <div class="navigation">
         <ul> 
-          <li><%= link_to "JOBS", jobs_path%></li>  
+          <li><%= link_to image_tag("nav_dashboard.png"), root_path%></li>  
+          <li><%= link_to image_tag('nav_jobs.png'), jobs_path%></li>  
+          <li><%= link_to image_tag("nav_billing.png"), "#"%></li> 
+          <li><%= link_to image_tag("nav_contacts.png"), "#"%></li>  
+          <li><%= link_to image_tag("nav_settings.png"), "#"%></li>              
         </ul>
       </div>
     </div>
   </div> 
--->
+<% end %>
+
   <div id="container">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
