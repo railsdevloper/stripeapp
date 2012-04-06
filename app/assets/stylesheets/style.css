@@ -12,7 +12,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 body {
-	background: #efefef;
+	background: url(images/background.jpg) top center no-repeat #f4f4f1;
 	font-family: Helvetica, Arial;
 	font-size: 12px;
 }
@@ -45,6 +45,7 @@ h2 {
 
 p {
 	line-height: 1.6;
+	margin: 0 0 10px 0;
 }
 
 li {
@@ -338,6 +339,55 @@ td.total_amount {
 .separator {
 	color: #666666;
 	margin: 0 10px;
+}
+
+.plan {
+	background: #efefef;
+	float: left;
+	margin: 0 20px 20px;
+	padding: 20px;
+	text-align: center;
+	width: 200px;
+}
+
+.plan img {
+	margin: 0 0 20px 0;
+}
+
+.plan img:last-child {
+	margin: 20px 0 0 0;
+}
+
+.plan li {
+	border-bottom: 1px solid #dddddd;
+	margin: 0 0 10px 0;
+	padding: 0 0 10px 0;
+}
+
+.plan li:last-child {
+	border-bottom: none;
+	margin: 0;
+}
+
+.benefit {
+	float: left;
+	margin: 0 20px 0 0;
+	text-align: center;
+	width: 195px;
+}
+
+.benefit:last-child {
+	margin: 0;
+}
+
+.benefit img {
+	margin: 0 0 10px 0
+}
+
+.benefit h2 {
+	border: none;
+	font-size: 14px;
+	margin: 0 0 10px 0;
 }
 
 .sidebar {
