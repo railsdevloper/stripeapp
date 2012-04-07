@@ -1,34 +1,57 @@
-<html>
-<head>
-<title>Contents</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-<link rel="stylesheet" href="stylesheet.css" type="text/css" media="screen" />
-</head>
-
-<body>
-  
-  <div class="header">
-    <div class="container">
-      <div class="logo">
-        <img src="images/logo_.png">
-      </div>
-      <div class="navigation">
-        <ul>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-<div class="wrapper paper">
-
 <div class="main">
   <div class="sidebar">
-    
+    <div class="block">
+      <h3>Job</h3>
+      <p><%=@inventory.job.customer_name%><br/>
+         <%=@inventory.job.address%><br/>
+         <%=@inventory.job.phone%><br/>
+      </p>
+    </div>
+    <div class="block">
+      <div class="block">
+        <h3>Condition</h3>
+        <dl class="stats">
+          <dt>All</dt>
+          <dd><a href="#">50</a></dd>
+          <dt>Cleanable</dt>
+          <dd><a href="#">30</a></dd>
+          <dt>Salvageable</dt>
+          <dd><a href="#">5</a></dd>
+          <dt>Total Loss</dt>
+          <dd><a href="#">5</a></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="block">
+      <h3>Status</h3>
+      <dl class="stats">
+        <dt>All</dt>
+        <dd><a href="#">50</a></dd>
+        <dt>Packout</dt>
+        <dd><a href="#">20</a></dd>
+        <dt>Inspection</dt>
+        <dd><a href="#">10</a></dd>
+        <dt>Processing</dt>
+        <dd><a href="#">5</a></dd>
+        <dt>Packback</dt>
+        <dd><a href="#">14</a></dd>
+        <dt>Returned</dt>
+        <dd><a href="#">0</a></dd>
+        <dt>Disposed</dt>
+        <dd><a href="#">1</a></dd>
+      </dl>
+    </div>
   </div>
   <div class="content">
+    <%=image_tag("heading_inventory.png", :class => "heading")%>
+    <div class="breadcrumbs">
+      <ul>
+        <li><a href="#">Dashboard</a><span class="separator">/</span></li>
+        <li><a href="#">Steve Jobs</a><span class="separator">/</span></li>
+        <li><a href="#">Inventory</a><span class="separator">/</span></li>
+        <li><a href="#">Add Inventory Item</a></li>
+      </ul>
+    </div>
     <div class="block">
       <%=form_for @inventory, :html => { :multipart => true } do |f|%>
         <% if @inventory.errors.any? %>
@@ -75,20 +98,3 @@
     </div>
   </div>
 </div>
-
-</div>
-
-<div class="footer">
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/terms">Terms</a></li>
-    <li><a href="/privacy">Privacy</a></li>
-    <li><img src="images/logo_footer_jlinshirt.png"></li>
-    <li><a href="/contact">Contact</a></li>
-    <li><a href="/twitter">Twitter</a></li>
-    <li><a href="/facebook">Facebook</a></li>
-  </ul>
-</div>
-
-</body>
-</html>

@@ -1,33 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Contents</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-<link rel="stylesheet" href="stylesheet.css" type="text/css" media="screen" />
-</head>
-
 <body class="narrow">
-  
-  <div class="header">
-    <div class="container">
-      <div class="logo">
-        <img src="images/logo_contentsiq.png">
-      </div>
-      <div class="navigation">
-        <ul>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-<div class="wrapper paper">
 
 <div class="main">
   <div class="content">
-    <img class="heading" src="images/heading_signin.png">
+    <%= image_tag("heading_signin.png") %>
     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
       <fieldset>
         <dl>
@@ -43,7 +18,4 @@
   </div>
 </div>
 
-</div>
-
 </body>
-</html>

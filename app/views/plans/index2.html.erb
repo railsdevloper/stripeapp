@@ -1,0 +1,27 @@
+<div class="header">
+  <div class="container">
+    <div class="logo">
+      <img src="images/logo_.png">
+    </div>
+  </div>
+</div> 
+
+<div id="plans">
+  <h2>All plans:</h2>
+  <% @plans.each do |plan| %>
+    <div class="plan">
+      <div class="name"><%= plan.name %></div>
+      <div class="details">
+        <div class="price">
+          <%= number_to_currency plan.price, :precision => 0 %>
+        </div>
+        <div class="per_month">per month</div>
+        <div class="per_month">per month</div>
+        <div class="signup">
+          <%= link_to "Sign up", new_subscription_registration_path(:plan_id => plan.id) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="clear"></div>
+</div>

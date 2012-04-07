@@ -1,27 +1,40 @@
-<div class="header">
-  <div class="container">
-    <div class="logo">
-      <img src="images/logo_.png">
-    </div>
-  </div>
-</div> 
-
-<div id="plans">
-  <h2>All plans:</h2>
-  <% @plans.each do |plan| %>
-    <div class="plan">
-      <div class="name"><%= plan.name %></div>
-      <div class="details">
-        <div class="price">
-          <%= number_to_currency plan.price, :precision => 0 %>
-        </div>
-        <div class="per_month">per month</div>
-        <div class="per_month">per month</div>
-        <div class="signup">
-          <%= link_to "Sign up", new_subscription_registration_path(:plan_id => plan.id) %>
-        </div>
+<div class="main">
+  <div class="content">
+    <%=image_tag("heading_plans.png", :class => "heading")%>
+    <div class="block">
+      <div class="plan">
+        <%=image_tag("plan_basic.png")%>
+        <ul>
+          <li>$199 setup fee</li>
+          <li>1 job per month</li>
+          <li>Unlimited items per job</li>
+          <li>Online training</li>
+          <li>Email support</li>
+          <li><%= link_to image_tag("button_signup.png"), new_subscription_registration_path(:plan_id => Plan.find_by_name("Basic").try(:id))%></li>
+        </ul>       
+      </div>
+      <div class="plan">
+        <%=image_tag("plan_plus.png")%>
+        <ul>
+          <li>$199 setup fee</li>
+          <li>3 jobs per month</li>
+          <li>Unlimited items per job</li>
+          <li>Online training</li>
+          <li>Email support</li>
+          <li><%= link_to image_tag("button_signup.png"), new_subscription_registration_path(:plan_id => Plan.find_by_name("Plus").try(:id))%></li>
+        </ul>       
+      </div>
+      <div class="plan">
+        <%=image_tag("plan_pro.png")%>
+        <ul>
+          <li>$199 setup fee</li>
+          <li>10 jobs per month</li>
+          <li>Unlimited items per job</li>
+          <li>Online training</li>
+          <li>Email support</li>
+          <li><%= link_to image_tag("button_signup.png"), new_subscription_registration_path(:plan_id => Plan.find_by_name("Pro").try(:id))%></li>
+        </ul>       
       </div>
     </div>
-  <% end %>
-  <div class="clear"></div>
+  </div>
 </div>

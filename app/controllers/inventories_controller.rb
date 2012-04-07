@@ -1,5 +1,4 @@
 class InventoriesController < ApplicationController
-#  layout "form"
 
   def index
     @inventories = Inventory.all   
@@ -23,7 +22,6 @@ class InventoriesController < ApplicationController
   def new
     @job = Job.find_by_customer_name(params[:customer_name])
     @inventory = @job.inventories.new
-#    @inventory = Inventory.new
   end
 
   def edit
@@ -35,7 +33,14 @@ class InventoriesController < ApplicationController
   end
 
   def update
-    
+    @inventory = Inventory.find(params[:id])
+    @job = @inventory.job
+    if @inventory.update_attributes(params[:inventory])
+      redirect_to "/jobs/#{@job.customer_name}/inventory/#{@inventory.item_name}" 
+#      redirect_to inventory_path(@inventory) 
+    else
+     render :action => "new"
+    end        
   end
   
   def add_situation
