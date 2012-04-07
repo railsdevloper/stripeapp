@@ -22,4 +22,8 @@ class SubscriptionsController < ApplicationController
   def show
     @subscription = Subscription.find(params[:id])
   end
+
+  def cancel 
+  end  
+
 end

@@ -1,0 +1,43 @@
+<div class="wrapper paper">
+
+<div class="main">
+  <div class="sidebar">
+    <div class="block">
+      <h3>Billing</h3>
+      <ul>
+        <li><a href="#">Transactions</a></li>
+        <li><a href="#">Payment Info</a></li>
+        <li><%= link_to "Cancel Subscription", cancel_subscription_path(@billing)%></li>
+      </ul>
+    </div>
+  </div>
+  <div class="content">
+    <img class="heading" src="images/heading_billing.png">
+    <div class="breadcrumbs">
+      <ul>
+        <li><a href="#">Dashboard</a><span class="separator">/</span></li>
+        <li><a href="#">Billing</a></li>
+    </div>
+    <div class="block">
+      <table>
+        <tr>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Plan</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+        <tr>
+          <td><%= @billing.created_at%></td>
+          <td><%= @billing.card_type%></td>
+          <td><%= @billing.plan_id%></td>
+          <td>100</td>
+          <td>Active</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div>
+

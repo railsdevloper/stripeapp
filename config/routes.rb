@@ -2,12 +2,15 @@ Saas::Application.routes.draw do
   devise_for :subscriptions, :controllers => {:registrations => "subscriptions", :sessions => "sessions"}
 
   root to: 'plans#index'
-  resources :subscriptions
+  resources :subscriptions do 
+    member do 
+      get 'cancel'
+    end
+  end
   resources :plans
-
   resources :inventories
-
   resources :jobs 
+  resources :billings
   match "/add_status/:job_id" => "jobs#add_status"
   match "/add_situation/:inventory_id" => "inventories#add_situation"
   match '/jobs/:customer_name/inventory' => 'inventories#new'
