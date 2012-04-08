@@ -1,8 +1,7 @@
 class SubscriptionsController < ApplicationController
+  respond_to :html
   
   skip_before_filter :authenticate_subscription!, :only => [:create, :new]
-  
-#  layout 'signup', :only => [:new, :create]
 
   def new
     plan = Plan.find(params[:plan_id])
@@ -13,7 +12,9 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.new(params[:subscription])
     if @subscription.save_with_payment
       SubscriptionMailer.sign_up(@subscription.email, @subscription.first_name, @subscription.last_name).deliver  
-      redirect_to @subscription, :notice => "Thank you for subscribing!"
+      sign_in(:subscription, @subscription)
+      respond_with @subscription, :location => after_sign_in_path_for(@subscription)
+#      redirect_to jobs_path, :notice => "Thank you for subscribing!"
     else
       render :new
     end

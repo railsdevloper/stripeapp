@@ -659,3 +659,10 @@ td.total_amount {
 .footer img {
 	vertical-align: middle;
 }
+
+.error {
+	background-color: #f0a8a8;
+	border: 1px solid #aaaaaa;
+	margin: 0 0 20px 0;
+	padding: 10px
+}

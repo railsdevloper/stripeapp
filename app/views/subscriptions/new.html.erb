@@ -6,8 +6,8 @@
     <p class="plan_details">You're signing up for the <strong>Pro</strong> plan (<strong>$10</strong> setup fee, <strong>$1</strong> monthly fee). You will be billed on the <strong>19th</strong> of every month. You can cancel anytime.</p>
     <%= form_for(@subscription, :url => registration_path(@subscription)) do |f| %>
       <% if @subscription.errors.any? %>
-        <div class="error_messages">
-          <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+        <div class="error_messages error">
+          <!--<h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>-->
           <ul>
           <% @subscription.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
@@ -21,6 +21,8 @@
       <fieldset>
         <h2>Account Information</h2>
         <dl>
+          <dt><label>Website</label></dt>
+          <dd><%= f.text_field :website %>.contentslab.com</dd>
           <dt><%= f.label :email %></dt>
           <dd><%= f.email_field :email %></dd>
           <dt><%= f.label :password %></dt>

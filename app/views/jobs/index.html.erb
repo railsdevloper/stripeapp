@@ -47,7 +47,7 @@
             <td><%= job.city%></td>
             <td><%= job.state%></td>
             <td><%= job.phone%></td>
-            <td><%#= job.status%></td>
+            <td><%= job.statuses.try(:last).try(:name)%></td>
           </tr>
         <% end %>
       </table>
