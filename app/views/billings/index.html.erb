@@ -28,7 +28,7 @@
         <tr>
           <td><%= @billing.created_at%></td>
           <td><%= @billing.card_type%></td>
-          <td><%= @billing.plan_id%></td>
+          <td><%= @billing.plan.name%></td>
           <td>$<%=@billing.plan.price%></td>
           <td>Active</td>
         </tr>
