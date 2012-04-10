@@ -1,40 +1,55 @@
+
+<!--  <div class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="images/logo_contentsiq.png">
+      </div>
+      <div class="navigation">
+        <ul>
+          <li><a href="#"><img src="images/nav_signin.png"></a></li>
+          <li><a href="#"><img src="images/nav_plans.png"></a></li>
+          <li><a href="#"><img src="images/nav_tour.png"></a></li>
+          <li><a href="#"><img src="images/nav_faq.png"></a></li>
+          <li><a href="#"><img src="images/nav_signup.png"></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+-->
+
 <div class="main">
   <div class="content">
-    <%=image_tag("heading_plans.png", :class => "heading")%>
-    <div class="block">
-      <div class="plan">
-        <%=image_tag("plan_basic.png")%>
-        <ul>
-          <li>$199 setup fee</li>
-          <li>1 job per month</li>
-          <li>Unlimited items per job</li>
-          <li>Online training</li>
-          <li>Email support</li>
-          <li><%= link_to image_tag("button_signup.png"), new_subscription_registration_path(:plan_id => Plan.find_by_name("Basic").try(:id))%></li>
-        </ul>       
+    <div class="hero">
+      <h1>Easily manage your contents restoration business with our streamlined web app. <a href="/plans/pricing">Sign up now</a> to get started.</h1>
+    </div>
+    <div class="call_to_action">
+      <%=link_to image_tag("button_call_to_action.png"), pricing_plans_path%>
+      <p>or take the <a href="/tour">tour</a> and try the <a href="/demo">demo</a>.</p>
+    </div>
+    <div class="benefits">
+      <div class="benefit">
+        <%=image_tag("icon_time.png")%>
+        <h2>Save Time</h2>
+        <p>Don't waste your time tracking contents and managing restoration jobs with paper and Excel files.</p>
       </div>
-      <div class="plan">
-        <%=image_tag("plan_plus.png")%>
-        <ul>
-          <li>$199 setup fee</li>
-          <li>3 jobs per month</li>
-          <li>Unlimited items per job</li>
-          <li>Online training</li>
-          <li>Email support</li>
-          <li><%= link_to image_tag("button_signup.png"), new_subscription_registration_path(:plan_id => Plan.find_by_name("Plus").try(:id))%></li>
-        </ul>       
+      <div class="benefit">
+        <%=image_tag("icon_organize.png")%>
+        <h2>Get Organized</h2>
+        <p>Track the location, condition, and status of any item throughout the entire restoration process.</p>
       </div>
-      <div class="plan">
-        <%=image_tag("plan_pro.png")%>
-        <ul>
-          <li>$199 setup fee</li>
-          <li>10 jobs per month</li>
-          <li>Unlimited items per job</li>
-          <li>Online training</li>
-          <li>Email support</li>
-          <li><%= link_to image_tag("button_signup.png"), new_subscription_registration_path(:plan_id => Plan.find_by_name("Pro").try(:id))%></li>
-        </ul>       
+      <div class="benefit">
+        <%=image_tag("icon_communicate.png")%>
+        <h2>Communicate Easily</h2>
+        <p>Communication between you, the client, and the adjuster becomes a cinch with our web interface.</p>
       </div>
+      <div class="benefit">
+        <%=image_tag("icon_money.png")%>
+        <h2>Make More Money</h2>
+        <p>Running a lean and efficient contents restoration process is the key to making more money.</p>
+      </div>
+    </div>
+    <div class="testimonial">
+      <p>We're doing at least one contents restoration job per week. We'd be lost without Contents Lab. <span class="source">Mark Coleman, Capital Cleaning</span></p>
     </div>
   </div>
 </div>

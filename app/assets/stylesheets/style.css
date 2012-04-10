@@ -206,7 +206,7 @@ td.total_amount {
 
 .navigation {
 	float: right;
-	margin: 5px 0 0 0;
+	margin: 10px 0 0 0;
 }
 
 .navigation img {
@@ -369,6 +369,12 @@ td.total_amount {
 	margin: 0;
 }
 
+.benefits {
+	clear: both;
+	margin: 0 0 20px 0;
+	overflow: hidden;
+}
+
 .benefit {
 	float: left;
 	margin: 0 20px 0 0;
@@ -430,6 +436,39 @@ td.total_amount {
 	float: right;
 	font-size: 12px;
 	font-weight: normal;
+}
+
+.hero {
+	float: left;
+	margin: 0 20px 40px 0;
+	width: 560px;
+}
+
+.call_to_action {
+	float: right;
+	padding: 20px;
+	text-align: center;
+	width: 220px;
+}
+
+.call_to_action p {
+	margin: 0;
+}
+
+.testimonial {
+	background: #efefef;
+	font-size: 14px;
+	font-style: italic;
+	padding: 10px;
+}
+
+.testimonial p {
+	margin: 0;
+}
+
+.source {
+	font-size: 12px;
+	margin: 0 0 0 10px;
 }
 
 .notice {
@@ -671,4 +710,3 @@ td.total_amount {
   background-color: red;
   display: table;
 }
-

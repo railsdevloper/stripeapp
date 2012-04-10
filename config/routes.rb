@@ -9,7 +9,11 @@ Saas::Application.routes.draw do
     end
   end
 
-  resources :plans
+  resources :plans do 
+    collection do 
+      get 'pricing'
+    end
+  end
   resources :inventories
   resources :jobs 
   resources :billings

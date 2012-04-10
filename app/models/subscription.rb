@@ -16,14 +16,7 @@ class Subscription < ActiveRecord::Base
   validates_presence_of :password_confirmation
   validates_presence_of :first_name, :last_name, :company, :phone_no, :zip_code, :city, :company_addr
 
-  # subdomain field validations
-
-#  validates_format_of :website, :with => /^[a-z0-9\-]*$/i, :message => "can only contain letters, numbers, and hyphens"
-#  validates_format_of :website, :with => /^[^-].*[^-]$/, :message => "cannot start or end with a hyphen"
-#  validates_length_of :website, :maximum => 32
-#  validates_length_of :website, :minimum => 4 
-#  validates_exclusion_of :website, :in => ['www', 'mail', 'ftp'], :message => "is not available"
-
+  # ToDo - Write all these validation in seperate rb file and use here as concerned_with
   # written website_validator for this validation
   validates  :website, :presence   => true,
                        :uniqueness => true,
@@ -41,14 +34,15 @@ class Subscription < ActiveRecord::Base
 
   validates_format_of :city, :cardholder_name, :with => /^[a-z\-]*$/i, :message => "can only contain letters and hyphens"
 
-  validates_length_of :zip_code, :maximum => 5
+  validates_length_of :zip_code, :is => 5
 
-  validates_format_of :first_name, :last_name, :with => /^[a-z\-]*$/i, :message => "can only contain letters, and hyphens"
+  validates_format_of :first_name, :last_name, :with => /^[a-z\-]*$/i, :message => "can only contain letters and hyphens"
   validates_format_of :first_name, :last_name, :with => /^[^-].*[^-]$/, :message => "cannot start or end with a hyphen"
   validates_length_of :first_name, :last_name, :maximum => 31
 
 
-#  validates_format_of :phone_no, :with => /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/, :message => 'is invalid'
+  validates_format_of :phone_no, :with => /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/, :message => 'is invalid'
+
 
   attr_accessor :stripe_card_token
 
