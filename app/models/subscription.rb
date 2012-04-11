@@ -10,6 +10,9 @@ class Subscription < ActiveRecord::Base
                   :expiration_month, :expiration_year, :plan_id, :stripe_card_token, :website
 
   belongs_to :plan
+  has_many :jobs
+
+  cattr_accessor :current_subscription
 
   validates_presence_of :plan_id
   validates_confirmation_of :password
@@ -27,7 +30,7 @@ class Subscription < ActiveRecord::Base
   validates_length_of :first_name, :last_name, :maximum => 31
 
 
-  validates_format_of :company, :company_addr, :with => /^[a-z0-9.\-]*$/i, :message => "can only contain letters, numbers, period and hyphens"
+  validates_format_of :company, :company_addr, :with => /^[a-z0-9. \-]*$/i, :message => "can only contain letters, numbers, period and hyphens"
   validates_length_of :company, :city, :cardholder_name, :maximum => 31
 
   validates_length_of :company_addr, :maximum => 63

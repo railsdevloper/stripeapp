@@ -39,7 +39,7 @@
           <th>Phone Number</th>
           <th>Status</th>
         </tr>
-        <% @jobs.each do |job| %>
+        <% current_subscription.jobs.each do |job| %>
           <tr>
             <td><%= link_to job.created_at, job_path(job)%></td>
             <td><%= job.customer_name%></td>
