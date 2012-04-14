@@ -7,7 +7,7 @@ class Subscription < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :position, :company, 
                   :company_addr, :city, :state, :zip_code, :phone_no, :last_four_digit, :cardholder_name, :card_type, 
-                  :expiration_month, :expiration_year, :plan_id, :stripe_card_token, :website
+                  :expiration_month, :expiration_year, :plan_id, :stripe_card_token, :username
 
   belongs_to :plan
   has_many :jobs
@@ -21,9 +21,9 @@ class Subscription < ActiveRecord::Base
 
   # ToDo - Write all these validation in seperate rb file and use here as concerned_with
   # written website_validator for this validation
-  validates  :website, :presence   => true,
-                       :uniqueness => true,
-                       :website  => true
+  validates  :username, :presence   => true,
+                       :uniqueness => true
+#                       :website  => true
 
   validates_format_of :first_name, :last_name, :with => /^[a-z\-]*$/i, :message => "can only contain letters, and hyphens"
   validates_format_of :first_name, :last_name, :company, :company_addr, :with => /^[^-].*[^-]$/, :message => "cannot start or end with a hyphen"
@@ -65,6 +65,10 @@ class Subscription < ActiveRecord::Base
     logger.error "Stripe error while creating customer: #{e.message}"
     errors.add :base, "There was a problem with your credit card."
     false
+  end
+
+  def jobs_status(status)
+    jobs.where("jobs.status" => status)
   end
 
 end

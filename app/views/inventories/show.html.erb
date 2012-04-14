@@ -10,8 +10,8 @@
     <div class="block">
       <h3>Inventory</h3>
       <ul>
-        <li><a href="#">View Inventory</a></li>
-        <li><a href="#">Add Inventory Item</a></li>
+        <li><a href="/<%=current_subscription.username%>/inventories">View Inventory</a></li>
+        <li><a href="/<%=current_subscription.username%>/jobs/<%=@inventory.job.customer_name%>/inventory">Add Inventory Item</a></li>
       </ul>
     </div>    
     <div class="block">
@@ -45,7 +45,7 @@
       </ul>
     </div>
     <div class="block">
-      <h2>Item Details <span class="heading_nav"><%=link_to 'Edit', edit_inventory_path(@inventory)%></span></h2>
+      <h2>Item Details <span class="heading_nav"><%=link_to 'Edit', edit_inventory_path(current_subscription, @inventory)%></span></h2>
         <dl>
           <dt>Item Name</dt>
           <dd><%= @inventory.item_name%></dd>
@@ -72,11 +72,11 @@
           <dt>Status</dt>
           <dd>
           <dd>
-            <%= form_tag( "/add_situation/#{@inventory.id}", :method => "post") do %>
+            <%= form_tag( "/#{current_subscription.username}/jobs/#{@inventory.job.customer_name}/inventory/#{@inventory.item_name}/add_situation/#{@inventory.id}", :method => "post") do %>
               <%=select_tag("situation", options_from_collection_for_select(Situation.all, :id, :name))%>
-              <%= submit_tag 'Update Status' %>
-          </dd> 
+              <%= submit_tag 'Update Status' %>           
             <%end%>
+          </dd>
         </dl>
     </div>
   </div>

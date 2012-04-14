@@ -88,21 +88,28 @@ dt {
 	width: 110px;
 }
 
+dt:last-child {
+	margin: 0;
+}
+
 dd {
 	color: #666666;
 	float: left;
 	margin: 0 0 10px 0;
 }
 
+dd:last-child {
+	margin: 0;
+}
+
 table {
 	border-collapse: collapse;
-	width: 100%;
 }
 
 table.narrow {
 	clear: both;
 	float: left;
-	width: 300px;
+	width: 40%;
 }
 
 th {
@@ -206,7 +213,7 @@ td.total_amount {
 
 .navigation {
 	float: right;
-	margin: 10px 0 0 0;
+	margin: 22px 0 0 0;
 }
 
 .navigation img {
@@ -422,6 +429,22 @@ td.total_amount {
 	border-bottom: 1px solid #eeeeee;
 	margin: 0 0 5px 0;
 	padding: 0 0 5px 0;
+}
+
+.dashboard {
+	background: #efefef;
+	float: left;
+	margin: 0 20px 20px 0;
+	padding: 20px;
+	width: 226px;
+}
+
+.dashboard:last-child {
+	margin: 0;
+}
+
+.dashboard h2 {
+	border-bottom: 1px solid #dddddd;
 }
 
 .stats dd {
@@ -698,6 +721,7 @@ td.total_amount {
 .footer img {
 	vertical-align: middle;
 }
+
 
 .error {
 	background-color: #f0a8a8;

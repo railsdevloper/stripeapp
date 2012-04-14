@@ -1,0 +1,74 @@
+<div class="main">
+  <div class="sidebar">
+    <div class="block">
+      <h3>Jobs</h3>
+      <dl class="stats">
+        <dt>All</dt>
+        <dd><a href="#"><%=@subscription.jobs.try(:size)%></a></dd>
+        <dt>Active</dt>
+        <dd><a href="#"><%=@subscription.jobs_status("Active").try(:size)%></a></dd>
+        <dt>Inactive</dt>
+        <dd><a href="#"><%=@subscription.jobs_status("In Active").try(:size)%></a></dd>
+        <dt>On Hold</dt>
+        <dd><a href="#"><%=@subscription.jobs_status("On Hold").try(:size)%></a></dd>
+        <dt>Complete</dt>
+        <dd><a href="#"><%=@subscription.jobs_status("Complete").try(:size)%></a></dd>
+      </dl>
+    </div>
+    <div class="block">
+      <h3>People</h3>
+      <dl class="stats">
+        <dt>All</dt>
+        <dd><a href="#"><%=find_jobs_people(@subscription)%></a></dd>
+        <dt>Customers</dt>
+        <dd><a href="#">4</a></dd>
+        <dt>Adjusters</dt>
+        <dd><a href="#">2</a></dd>
+        <dt>Technicians</dt>
+        <dd><a href="#">1</a></dd>
+      </dl>
+    </div>
+    <div class="block">
+      <h3>Inventory</h3>
+      <dl class="stats">
+        <dt>All</dt>
+        <dd><%=@subscription.jobs.map(&:inventories).try(:size)%></dd>
+        <dt>Packout</dt>
+        <dd>3</dd>
+        <dt>Inspection</dt>
+        <dd>2</dd>
+        <dt>Processing</dt>
+        <dd>1</dd>
+        <dt>Packback</dt>
+        <dd>4</dd>
+        <dt>Returned</dt>
+        <dd>4</dd>
+        <dt>Disposed</dt>
+        <dd>4</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="content">
+    <img class="heading" src="images/heading_dashboard.png">
+    <div class="block">
+      <h2>Plan Information <span class="heading_nav"><a href="#">Edit</a></span></h2>
+      <dl>
+        <dt>Plan</dt>
+        <dd><%=@subscription.plan.try(:name)%></dd>
+        <dt>Monthly Fee</dt>
+        <dd>$<%=@subscription.plan.try(:price)%></dd>
+        <dt>Payment Date</dt>
+        <dd><%=@subscription.created_at.strftime("%d")%>th of every month</dd>
+        <dt>Jobs this month</dt>
+        <dd><%=@subscription.jobs.try(:size)%></dd>
+      </dl>
+      <h2>Recent Sign Ins</h2>
+      <table class="narrow">
+        <tr>
+          <td><%=@subscription.last_sign_in_at%></td><!--<td>April 10, 2012 - 12:34 PM</td>-->
+          <td><%=@subscription.first_name%> <%=@subscription.last_name%></td></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

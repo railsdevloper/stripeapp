@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     stored_location_for(resource) ||
     if resource.is_a?(Subscription)
-      jobs_path
+      jobs_path(current_subscription.username)
     else
       super
     end

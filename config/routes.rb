@@ -14,14 +14,17 @@ Saas::Application.routes.draw do
       get 'pricing'
     end
   end
-  resources :inventories
-  resources :jobs 
-  resources :billings
 
-  match "/jobs/:customer_name/inventory" => "inventories#new"
-  match "/jobs/:customer_name/inventory/:inventory_name" => "inventories#show"
+  resources :dashboards, :path => "/:username/dashboards"
+  resources :inventories, :path => "/:username/inventories"
+  resources :jobs, :path => "/:username/jobs" 
+  resources :billings, :path => "/:username/billings"
 
-  match "/add_status/:job_id" => "jobs#add_status"
-  match "/add_situation/:inventory_id" => "inventories#add_situation"
+  match ":username/jobs/:customer_name/inventory" => "inventories#new"
+  match ":username/jobs/:customer_name/inventory/:inventory_name" => "inventories#show"
+  match ":username/jobs/:customer_name/inventories" => "inventories#inventories"
+
+  match ":username/jobs/:customer_name/add_status" => "jobs#add_status"
+  match ":username/jobs/:customer_name/inventory/:inventory_name/add_situation/:inventory_id" => "inventories#add_situation", :via => :post
 
 end

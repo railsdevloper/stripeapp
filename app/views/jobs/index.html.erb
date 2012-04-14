@@ -3,7 +3,7 @@
     <div class="block">
       <h3>Jobs</h3>
       <ul>
-        <li><%= link_to "Add New Job", new_job_path %></li>
+        <li><%= link_to "Add New Job", "/#{current_subscription.username}/jobs/new" %></li>
       </ul>
     </div>
     <div class="block">
@@ -41,7 +41,7 @@
         </tr>
         <% current_subscription.jobs.each do |job| %>
           <tr>
-            <td><%= link_to job.created_at, job_path(job)%></td>
+            <td><%= link_to job.created_at, "/#{current_subscription.username}/jobs/#{job.id}"%></td>
             <td><%= job.customer_name%></td>
             <td><%= job.address%></td>
             <td><%= job.city%></td>

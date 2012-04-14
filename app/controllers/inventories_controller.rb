@@ -1,4 +1,5 @@
 class InventoriesController < ApplicationController
+  respond_to :html
 
   def index
     @inventories = Inventory.all   
@@ -12,7 +13,7 @@ class InventoriesController < ApplicationController
     @job = Job.find(params[:job_id])
     @inventory = @job.inventories.new(params[:inventory])
     if @inventory.save
-      redirect_to "/jobs/#{@job.customer_name}/inventory/#{@inventory.item_name}" 
+      redirect_to "/#{current_subscription.username}/jobs/#{@job.customer_name}/inventory/#{@inventory.item_name}" 
 #      redirect_to inventory_path(@inventory) 
     else
      render :action => "new"
@@ -21,6 +22,7 @@ class InventoriesController < ApplicationController
 
   def new
     @job = Job.find_by_customer_name(params[:customer_name])
+    @subscription = Subscription.find_by_username(params[:user_name])
     @inventory = @job.inventories.new
   end
 
@@ -36,7 +38,7 @@ class InventoriesController < ApplicationController
     @inventory = Inventory.find(params[:id])
     @job = @inventory.job
     if @inventory.update_attributes(params[:inventory])
-      redirect_to "/jobs/#{@job.customer_name}/inventory/#{@inventory.item_name}" 
+      redirect_to "/#{current_subscription.username}/jobs/#{@job.customer_name}/inventory/#{@inventory.item_name}" 
 #      redirect_to inventory_path(@inventory) 
     else
      render :action => "new"
@@ -47,6 +49,12 @@ class InventoriesController < ApplicationController
     InventoriesSituations.create(:inventory_id => params[:inventory_id], :situation_id => params[:situation])
     @inventory = Inventory.find(params[:inventory_id])
     render :action => "show", :locals => {:inventory => @inventory}
+  end
+
+  def inventories
+    @job = Job.find_by_customer_name(params[:customer_name])
+    @inventories = @job.inventories 
+    render :action => "index"
   end
 
 end

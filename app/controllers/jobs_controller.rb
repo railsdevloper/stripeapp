@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+  respond_to :html
 
   def index
     @jobs = Job.all
@@ -11,7 +12,7 @@ class JobsController < ApplicationController
   def create
     @job = Job.create(params[:job])
     if @job.save
-      redirect_to "/jobs/#{@job.customer_name}/inventory" 
+      redirect_to "/#{current_subscription.username}/jobs/#{@job.customer_name}/inventory" 
     else
      render :action => "new"
     end
@@ -30,8 +31,8 @@ class JobsController < ApplicationController
   end
 
   def add_status
-    JobsStatus.create(:job_id => params[:job_id], :status_id => params[:status])
-    @job = Job.find(params[:job_id])
+    @job = Job.find_by_customer_name(params[:customer_name])
+    JobsStatus.create(:job_id => @job.try(:id), :status_id => params[:status])
     render :action => "show", :locals => {:job => @job}  
   end
 
