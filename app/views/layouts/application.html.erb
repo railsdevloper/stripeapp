@@ -43,7 +43,7 @@
       </div>
     </div>
   </div> 
-<% elsif params["plan_id"].blank? && !request.url.include?('/sign_in')%>
+<% elsif params["plan_id"].blank? && !request.url.include?('/sign_in') && !request.url.include?('/subscriptions')%>
   <div class="header">
     <div class="container">
       <div class="logo">

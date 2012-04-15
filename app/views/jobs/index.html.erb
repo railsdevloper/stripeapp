@@ -3,7 +3,9 @@
     <div class="block">
       <h3>Jobs</h3>
       <ul>
-        <li><%= link_to "Add New Job", "/#{current_subscription.username}/jobs/new" %></li>
+        <%if can_add_job?(current_subscription)%>
+          <li><%= link_to "Add New Job", new_job_path(current_subscription.username) %></li>
+        <% end %>
       </ul>
     </div>
     <div class="block">

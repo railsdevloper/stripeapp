@@ -1,3 +1,41 @@
+# == Schema Information
+#
+# Table name: subscriptions
+#
+#  id                     :integer         not null, primary key
+#  plan_id                :integer
+#  email                  :string(255)
+#  password               :string(255)
+#  created_at             :datetime
+#  updated_at             :datetime
+#  stripe_customer_token  :string(255)
+#  first_name             :string(255)
+#  last_name              :string(255)
+#  position               :string(255)
+#  company                :string(255)
+#  company_addr           :text
+#  city                   :string(255)
+#  state                  :string(255)
+#  zip_code               :integer
+#  country                :string(255)
+#  phone_no               :text
+#  cardholder_name        :string(255)
+#  last_four_digit        :integer
+#  expiration_month       :integer
+#  expiration_year        :integer
+#  card_type              :string(255)
+#  encrypted_password     :string(255)     default(""), not null
+#  reset_password_token   :string(255)
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer         default(0)
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string(255)
+#  last_sign_in_ip        :string(255)
+#  username               :string(255)
+#
+
 class Subscription < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -14,38 +52,7 @@ class Subscription < ActiveRecord::Base
 
   cattr_accessor :current_subscription
 
-  validates_presence_of :plan_id
-  validates_confirmation_of :password
-  validates_presence_of :password_confirmation
-  validates_presence_of :first_name, :last_name, :company, :phone_no, :zip_code, :city, :company_addr
-
-  # ToDo - Write all these validation in seperate rb file and use here as concerned_with
-  # written website_validator for this validation
-  validates  :username, :presence   => true,
-                       :uniqueness => true
-#                       :website  => true
-
-  validates_format_of :first_name, :last_name, :with => /^[a-z\-]*$/i, :message => "can only contain letters, and hyphens"
-  validates_format_of :first_name, :last_name, :company, :company_addr, :with => /^[^-].*[^-]$/, :message => "cannot start or end with a hyphen"
-  validates_length_of :first_name, :last_name, :maximum => 31
-
-
-  validates_format_of :company, :company_addr, :with => /^[a-z0-9. \-]*$/i, :message => "can only contain letters, numbers, period and hyphens"
-  validates_length_of :company, :city, :cardholder_name, :maximum => 31
-
-  validates_length_of :company_addr, :maximum => 63
-
-  validates_format_of :city, :cardholder_name, :with => /^[a-z\-]*$/i, :message => "can only contain letters and hyphens"
-
-  validates_length_of :zip_code, :is => 5
-
-  validates_format_of :first_name, :last_name, :with => /^[a-z\-]*$/i, :message => "can only contain letters and hyphens"
-  validates_format_of :first_name, :last_name, :with => /^[^-].*[^-]$/, :message => "cannot start or end with a hyphen"
-  validates_length_of :first_name, :last_name, :maximum => 31
-
-
-  validates_format_of :phone_no, :with => /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/, :message => 'is invalid'
-
+  concerned_with :signup_validations
 
   attr_accessor :stripe_card_token
 

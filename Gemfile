@@ -20,3 +20,9 @@ gem 'jquery-rails'
 gem 'stripe'
 gem "paperclip", "~> 2.0"
 gem 'devise'
+
+#annotate --exclude tests,fixtures
+#annotate -r
+gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+gem 'concerned_with'
+

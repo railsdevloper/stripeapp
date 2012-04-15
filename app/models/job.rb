@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: jobs
+#
+#  id                :integer         not null, primary key
+#  customer_name     :string(255)
+#  address           :text
+#  city              :string(255)
+#  state             :string(255)
+#  zip_code          :string(255)
+#  phone             :text
+#  email             :string(255)
+#  insurance_company :string(255)
+#  adjuster          :string(255)
+#  claim_number      :integer
+#  created_at        :datetime
+#  updated_at        :datetime
+#  status            :string(255)
+#  subscription_id   :integer
+#
+
 class Job < ActiveRecord::Base
   validates :customer_name, :address, :city, :state, :zip_code, :phone, :email,
  :insurance_company, :adjuster , :claim_number, :presence => true                             
