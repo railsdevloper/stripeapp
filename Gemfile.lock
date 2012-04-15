@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/ctran/annotate_models.git
+  revision: ff1131daee8c03dbcc4966b7914b77a7e3a62f02
+  specs:
+    annotate (2.4.1.beta1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -40,6 +46,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.1.2)
+    concerned_with (0.1.0)
     devise (2.0.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -127,7 +134,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate!
   coffee-rails (~> 3.1.1)
+  concerned_with
   devise
   execjs (= 1.2.9)
   jquery-rails
