@@ -67,8 +67,9 @@ class Subscription < ActiveRecord::Base
     false
   end
 
-  def jobs_status(status)
-    jobs.where("jobs.status" => status)
+  def jobs_status(job_status)
+    statuses =  jobs.map(&:statuses).map(&:last)
+    statuses.reject!{|status| status.try(:name) != job_status}
   end
 
 end
