@@ -33,7 +33,7 @@
       </div>
       <div class="navigation">
         <ul> 
-          <li><%= link_to image_tag("nav_dashboard.png"), dashboards_path(current_subscription.username)%></li>  
+          <li><%= link_to image_tag("nav_dashboard.png"), "/#{current_subscription.username}/dashboards"%></li>  
           <li><%= link_to image_tag('nav_jobs.png'), "/#{current_subscription.username}/jobs"%></li> 
           <li><%= link_to image_tag("nav_contacts.png"), "#"%></li>   
           <li><%= link_to image_tag("nav_settings.png"), "#"%></li> 
