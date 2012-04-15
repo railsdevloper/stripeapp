@@ -91,7 +91,7 @@
           <dt>Packout Image</dt>
           <dd><%= f.file_field :avatar %></dd>
           <dt></dt>
-          <%= hidden_field_tag "job_id", "#{@job.id}" if @job.present?%>
+          <%= hidden_field_tag "inventory[job_id]", "#{@job.id}" if @job.present?%>
           <dd><%= f.submit %></dd>
         </dl>
       <% end %>

@@ -1,0 +1,16 @@
+development:
+  bucket: contentslab
+  access_key_id: AKIAJEXFADQRK6G7DJ2Q
+  secret_access_key: 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
+
+test:
+  bucket: contentslab
+  access_key_id: AKIAJEXFADQRK6G7DJ2Q
+  secret_access_key: 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
+
+production:
+  bucket: contentslab
+  access_key_id: AKIAJEXFADQRK6G7DJ2Q
+  secret_access_key: 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
+
+

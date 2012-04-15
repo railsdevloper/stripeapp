@@ -24,5 +24,9 @@ gem 'devise'
 #annotate --exclude tests,fixtures
 #annotate -r
 gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+
 gem 'concerned_with'
 
+gem 'aws-s3'
+gem 'aws-sdk'
+gem "haml", "~> 3.1.4"

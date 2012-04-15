@@ -10,8 +10,8 @@ class InventoriesController < ApplicationController
   end
 
   def create
-    @job = Job.find(params[:job_id])
-    @inventory = @job.inventories.new(params[:inventory])
+    @job = Job.find(params[:inventory][:job_id])
+    @inventory = Inventory.new(params[:inventory])
     if @inventory.save
       redirect_to "/#{current_subscription.username}/jobs/#{@job.customer_name}/inventory/#{@inventory.item_name}" 
 #      redirect_to inventory_path(@inventory) 
