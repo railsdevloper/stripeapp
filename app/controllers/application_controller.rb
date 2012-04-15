@@ -8,9 +8,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     stored_location_for(resource) ||
     if resource.is_a?(Subscription)
-        puts "#{current_subscription.username.inspect}RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"
-      "/#{current_subscription.username}/jobs"
-#      jobs_path(current_subscription.username)
+      jobs_path(current_subscription.username)
     else
       super
     end
