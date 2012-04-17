@@ -31,9 +31,16 @@ class Job < ActiveRecord::Base
 
   before_save :set_subscription_id
 
+  after_save :set_statuses
+
 
   def set_subscription_id
     self.subscription_id = Subscription.current_subscription.try(:id)
+  end
+
+  def set_statuses
+    status_id = Status.find_by_name("Active")
+    JobsStatus.create(:job_id => self.try(:id), :status_id => status_id)    
   end
 
 end

@@ -6,14 +6,15 @@ class InventoriesController < ApplicationController
   end
 
   def show    
-    @inventory = Inventory.find_by_item_name(params[:inventory_name])
+    @inventory = Inventory.find(params[:id]) if params[:id]
+    @inventory ||= Inventory.find_by_item_name(params[:inventory_name].gsub("-", " ")) if params[:inventory_name]
   end
 
   def create
     @job = Job.find(params[:inventory][:job_id])
     @inventory = Inventory.new(params[:inventory])
     if @inventory.save
-      redirect_to "/#{current_subscription.username}/jobs/#{@job.customer_name}/inventory/#{@inventory.item_name}" 
+      redirect_to "/#{current_subscription.username}/jobs/#{@job.customer_name.gsub(' ', '-')}/inventory/#{@inventory.item_name.gsub(' ', '-')}" 
 #      redirect_to inventory_path(@inventory) 
     else
      render :action => "new"
@@ -21,7 +22,7 @@ class InventoriesController < ApplicationController
   end
 
   def new
-    @job = Job.find_by_customer_name(params[:customer_name])
+    @job = Job.find_by_customer_name(params[:customer_name].gsub("-", " "))
     @subscription = Subscription.find_by_username(params[:user_name])
     @inventory = @job.inventories.new
   end
@@ -38,7 +39,7 @@ class InventoriesController < ApplicationController
     @inventory = Inventory.find(params[:id])
     @job = @inventory.job
     if @inventory.update_attributes(params[:inventory])
-      redirect_to "/#{current_subscription.username}/jobs/#{@job.customer_name}/inventory/#{@inventory.item_name}" 
+      redirect_to "/#{current_subscription.username}/jobs/#{@job.customer_name.gsub(' ', '-')}/inventory/#{@inventory.item_name.gsub(' ', '-')}" 
 #      redirect_to inventory_path(@inventory) 
     else
      render :action => "new"
@@ -52,7 +53,7 @@ class InventoriesController < ApplicationController
   end
 
   def inventories
-    @job = Job.find_by_customer_name(params[:customer_name])
+    @job = Job.find_by_customer_name(params[:customer_name].gsub("-", " "))
     @inventories = @job.inventories 
     render :action => "index"
   end

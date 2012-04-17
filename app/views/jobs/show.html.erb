@@ -3,15 +3,17 @@
     <div class="block">
       <h3>Jobs</h3>
       <ul>
-        <li><a href="/#{current_subscription.username}/jobs">View All Jobs</a></li>
-        <li><a href="/#{current_subscription.username}/jobs/new">Add New Job</a></li>
+        <li><a href="/<%=current_subscription.username%>/jobs">View All Jobs</a></li>
+        <%if can_add_job?(current_subscription)%>
+          <li><a href="/<%=current_subscription.username%>/jobs/new">Add New Job</a></li>
+        <%end%>
       </ul>
     </div>
     <div class="block">
       <h3>Inventory</h3>
       <ul>
-        <li><a href="/<%=current_subscription.username%>/jobs/<%=@job.customer_name%>/inventories">View Inventory</a></li>
-        <li><a href="/<%=current_subscription.username%>/jobs/<%=@job.customer_name%>/inventory">Add Inventory Item</a></li>
+        <li><a href="/<%=current_subscription.username%>/jobs/<%=@job.customer_name.gsub(' ', '-')%>/inventories">View Inventory</a></li>
+        <li><a href="/<%=current_subscription.username%>/jobs/<%=@job.customer_name.gsub(' ', '-')%>/inventory/new">Add Inventory Item</a></li>
       </ul>
     </div>
     <div class="block">
@@ -64,13 +66,13 @@
         </dl>
       <h2>Status</h2>
         <dl>
-        <%@job.statuses.each do |status| %>
+        <%@job.statuses.uniq.each do |status| %>
           <dt><%=status.created_at%></dt>
           <dd><%=status.name%></dd>
         <% end %>
           <dt>Status</dt>
           <dd>
-            <%= form_tag "/#{current_subscription.username}/jobs/#{@job.customer_name}/add_status" do %>
+            <%= form_tag "/#{current_subscription.username}/jobs/#{@job.customer_name.gsub(' ', '-')}/add_status" do %>
               <%=select_tag("status", options_from_collection_for_select(Status.all, :id, :name))%>
               <%= submit_tag 'Update Status' %>
             <% end %>

@@ -42,10 +42,10 @@
         </tr>
         <% @inventories.each do |inventory| %>
           <tr>
-            <td><%= inventory.item_name%></td>
+            <td><%= link_to inventory.item_name, inventory_path(current_subscription.username, inventory)%></td>
             <td><%= inventory.room%></td>
-            <td><%= inventory.local_location_1%>-<%=inventory.local_location%></td>
-            <td><%= inventory.global_location_1%>-<%=inventory.global_location%></td>
+            <td><%= inventory.local_location_1%> <%=inventory.local_location%></td>
+            <td><%= inventory.global_location_1%> <%=inventory.global_location%></td>
             <td><%= inventory.condition%></td>
             <td><%= image_tag(inventory.avatar.url(:thumb)) %></td>
           </tr>

@@ -11,7 +11,7 @@
       <h3>Inventory</h3>
       <ul>
         <li><a href="/<%=current_subscription.username%>/inventories">View Inventory</a></li>
-        <li><a href="/<%=current_subscription.username%>/jobs/<%=@inventory.job.customer_name%>/inventory">Add Inventory Item</a></li>
+        <li><a href="/<%=current_subscription.username%>/jobs/<%=@inventory.job.customer_name%>/inventory/new">Add Inventory Item</a></li>
       </ul>
     </div>    
     <div class="block">
@@ -72,7 +72,7 @@
           <dt>Status</dt>
           <dd>
           <dd>
-            <%= form_tag( "/#{current_subscription.username}/jobs/#{@inventory.job.customer_name}/inventory/#{@inventory.item_name}/add_situation/#{@inventory.id}", :method => "post") do %>
+            <%= form_tag( "/#{current_subscription.username}/jobs/#{@inventory.job.customer_name}/inventory/#{@inventory.item_name.gsub(' ', '-')}/add_status/#{@inventory.id}", :method => "post") do %>
               <%=select_tag("situation", options_from_collection_for_select(Situation.all, :id, :name))%>
               <%= submit_tag 'Update Status' %>           
             <%end%>

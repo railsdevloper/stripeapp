@@ -12,7 +12,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 body {
-	background: url(images/background.jpg) top center no-repeat #f4f4f1;
+	background: url(background.jpg) top center no-repeat #f4f4f1;
 	font-family: Helvetica, Arial;
 	font-size: 12px;
 }

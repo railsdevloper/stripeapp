@@ -15,7 +15,7 @@ class JobsController < ApplicationController
   def create
     @job = Job.create(params[:job])
     if @job.save
-      redirect_to "/#{current_subscription.username}/jobs/#{@job.customer_name}/inventory" 
+      redirect_to "/#{current_subscription.username}/jobs/#{@job.customer_name.gsub(' ', '-')}/inventory/new" 
     else
      render :action => "new"
     end
@@ -26,7 +26,7 @@ class JobsController < ApplicationController
   end
 
   def add_status
-    @job = Job.find_by_customer_name(params[:customer_name])
+    @job = Job.find_by_customer_name(params[:customer_name].gsub("-", " "))
     JobsStatus.create(:job_id => @job.try(:id), :status_id => params[:status])
     render :action => "show", :locals => {:job => @job}  
   end
