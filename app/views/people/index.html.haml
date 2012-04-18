@@ -8,18 +8,7 @@
     .block
       %h3 Types
       %dl.stats
-        %dt All
-        %dd
-          = link_to current_subscription.find_people("All").to_s, people_path(current_subscription.username, :type => "All")
-        %dt Customers
-        %dd
-          = link_to current_subscription.find_people("Customer").to_s, people_path(current_subscription.username, :type => "Customer")
-        %dt Adjusters
-        %dd
-          = link_to current_subscription.find_people("Adjuster").to_s, people_path(current_subscription.username, :type => "Adjuster")
-        %dt Technicians
-        %dd
-          = link_to current_subscription.find_people("Technician").to_s, people_path(current_subscription.username, :type => "Technician")
+        = render 'people_types'
   .content
     = image_tag("heading_contacts.png", :class => "heading")
     .breadcrumbs

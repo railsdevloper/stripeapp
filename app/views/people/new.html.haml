@@ -8,18 +8,7 @@
     .block
       %h3 Types
       %dl.stats
-        %dt All
-        %dd
-          %a{:href => "#"} 5
-        %dt Customers
-        %dd
-          %a{:href => "#"} 2
-        %dt Adjusters
-        %dd
-          %a{:href => "#"} 2
-        %dt Technicians
-        %dd
-          %a{:href => "#"} 1
+        = render 'people_types'
   .content
     = image_tag("heading_contacts.png", :class => "heading")
     .breadcrumbs
