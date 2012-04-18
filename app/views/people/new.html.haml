@@ -39,10 +39,10 @@
         %dl
           %dt Contact Type
           %dd
-            = f.select :contact_type, "<option>Customer</option><option>Adjuster</option><option>Technician</option>".html_safe
+            = f.select :contact_type, [["Customer", "Customer"], ["Adjuster", "Adjuster"], ["Technician", "Technician"]]
           %dt Insurance Company
           %dd
-            = f.select :insurance_company, find_insurance_comp_options(@insurance_companies)
+            = f.select :insurance_company, @insurance_companies.all.collect {|p| [ p.name, p.id ] }
             %span.form_details
               = link_to 'Add new', "#", :class => 'add_new_insurance_comp'
           %dt Contact Name
@@ -65,7 +65,7 @@
             = f.text_field :phone_no
           %dt Email Address
           %dd
-            = f.text_field :phone_no
+            = f.text_field :email
           %dt
           %dd            
             = f.submit

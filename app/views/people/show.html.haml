@@ -36,7 +36,7 @@
       %h2
         Contact Information
         %span.heading_nav
-          = link_to 'Edit', '#'
+          = link_to 'Edit', edit_person_path(current_subscription.username, @person)
       %dl
         %dt Contact Type
         %dd
