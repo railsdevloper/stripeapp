@@ -96,6 +96,8 @@ var modal = (function(){
 
 	function hideFormElements(type){
 		if (type == "Technician"){
-			$('.notech').remove();
+			$('.notech').hide();
+		} else {
+			$('.notech').show();
 		}
 	}

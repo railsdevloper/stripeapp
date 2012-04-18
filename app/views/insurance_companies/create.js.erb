@@ -1,4 +1,6 @@
-
-$('#person_insurance_company').append("<option value=<%= @insurance_company.id %>><%= @insurance_company.name %></option>");  
-
-$('#close').trigger('click');
+<% if @insurance_company.errors.any? %>
+  $('.error_msg').html("<div class='error'><ul><% @insurance_company.errors.full_messages.each do |msg| %><li><%= msg %></li><%end%></ul></div>")
+<% else %>
+  $('#person_insurance_company').append("<option value=<%= @insurance_company.id %>><%= @insurance_company.name %></option>");  
+  $('#close').trigger('click');
+<%end%>

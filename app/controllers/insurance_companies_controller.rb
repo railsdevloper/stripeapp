@@ -15,7 +15,8 @@ class InsuranceCompaniesController < ApplicationController
       if @insurance_company.save
         format.js 
       else
-        render :action => :new, :layout => false
+        format.js 
+#        render :action => :new, :layout => false
       end
     end
   end
