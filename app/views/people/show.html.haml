@@ -4,7 +4,7 @@
       %h3 Contacts
       %ul
         %li
-          %a{:href => "#"} View All Contacts
+          = link_to "View All Contacts", people_path(current_subscription.username)
     .block
       %h3 Types
       %dl.stats
@@ -21,39 +21,39 @@
         %dd
           %a{:href => "#"} 1
   .content
-    %img.heading{:src => "images/heading_contacts.png"}
-      .breadcrumbs
-        %ul
-          %li
-            %a{:href => "#"} Dashboard
-            %span.separator /
-          %li
-            %a{:href => "#"} Contacts
-            %span.separator /
-          %li
-            %a{:href => "#"} Steve Jobs
-      .block
-        %h2
-          Contact Information
-          %span.heading_nav
-            %a{:href => "#"} Edit
-        %dl
-          %dt Contact Type
-          %dd
-            Customer
-          %dt Insurance Company
-          %dd State Farm Insurance
-          %dt Contact Name
-          %dd Steve Jobs
-          %dt Address
-          %dd 1 Infinite Loop
-          %dt City
-          %dd Cupertino
-          %dt State
-          %dd California
-          %dt Zip Code
-          %dd 90200
-          %dt Phone Number
-          %dd 310-555-5555
-          %dt Email Address
-          %dd steve@apple.com
+    = image_tag("heading_contacts.png", :class => "heading")
+    .breadcrumbs
+      %ul
+        %li
+          = link_to "Dashboard", ''
+          %span.separator /
+        %li
+          = link_to 'Contacts', '#'
+          %span.separator /
+        %li
+          = link_to "Steve Jobs", '#'
+    .block
+      %h2
+        Contact Information
+        %span.heading_nav
+          = link_to 'Edit', '#'
+      %dl
+        %dt Contact Type
+        %dd
+          = @person.contact_type
+        %dt Insurance Company
+        %dd= InsuranceCompany.find(@person.insurance_company).name
+        %dt Contact Name
+        %dd= @person.contact_name
+        %dt Address
+        %dd= @person.address
+        %dt City
+        %dd= @person.city
+        %dt State
+        %dd= @person.state
+        %dt Zip Code
+        %dd= @person.state
+        %dt Phone Number
+        %dd= @person.phone_no
+        %dt Email Address
+        %dd= @person.email

@@ -41,7 +41,7 @@
           %th Insurance Company
         - @person.each do |person|
           %tr
-            %td= person.contact_type
+            %td= link_to person.contact_type, person_path(current_subscription.username, person) 
             %td= person.contact_name
             %td= person.address
             %td= person.city
