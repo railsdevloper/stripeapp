@@ -84,5 +84,18 @@ var modal = (function(){
 			});
 			e.preventDefault();
 		});
+		ModifyForTechnician();
 	});
 
+	function ModifyForTechnician(){
+		$('#person_contact_type').change(function(){
+			type = $(this).val();
+			hideFormElements(type);
+		});
+	}
+
+	function hideFormElements(type){
+		if (type == "Technician"){
+			$('.notech').remove();
+		}
+	}

@@ -4,7 +4,7 @@
       %h3 Contacts
       %ul
         %li
-          %a{:href => "#"} View All Contacts
+          = link_to "View All Contacts", people_path(current_subscription.username)
     .block
       %h3 Types
       %dl.stats
@@ -14,13 +14,10 @@
     .breadcrumbs
       %ul
         %li
-          %a{:href => "#"} Dashboard
+          = link_to "Dashboard", dashboards_path(current_subscription.username)
           %span.separator /
         %li
-          %a{:href => "#"} Contacts
-          %span.separator /
-        %li
-          %a{:href => "#"} Add New Contact
+          = link_to 'Contacts', people_path(current_subscription.username)
     .block
       = form_for @person do |f| 
         = hidden_field_tag "person[subscription_id]", current_subscription.id
@@ -29,28 +26,28 @@
           %dt Contact Type
           %dd
             = f.select :contact_type, [["Customer", "Customer"], ["Adjuster", "Adjuster"], ["Technician", "Technician"]]
-          %dt Insurance Company
-          %dd
+          %dt{:class => 'notech'} Insurance Company
+          %dd{:class => 'notech'}
             = f.select :insurance_company, @insurance_companies.all.collect {|p| [ p.name, p.id ] }
             %span.form_details
               = link_to 'Add new', "#", :class => 'add_new_insurance_comp'
           %dt Contact Name
           %dd
             = f.text_field :contact_name
-          %dt Address
-          %dd
+          %dt{:class => 'notech'} Address
+          %dd{:class => 'notech'}
             = f.text_field :address
-          %dt City
-          %dd
+          %dt{:class => 'notech'} City
+          %dd{:class => 'notech'}
             = f.text_field :city
-          %dt State
-          %dd
+          %dt{:class => 'notech'} State
+          %dd{:class => 'notech'}
             = f.select :state, options_for_select(['Ohio'])
-          %dt Zip Code
-          %dd
+          %dt{:class => 'notech'} Zip Code
+          %dd{:class => 'notech'}
             = f.text_field :zip_code
-          %dt Phone Number
-          %dd
+          %dt{:class => 'notech'} Phone Number
+          %dd{:class => 'notech'}
             = f.text_field :phone_no
           %dt Email Address
           %dd
@@ -58,3 +55,5 @@
           %dt
           %dd            
             = f.submit
+
+= javascript_tag("hideFormElements('#{@person.contact_type}')") unless @person.new_record?

@@ -36,4 +36,5 @@
             %td= person.city
             %td= person.state
             %td= person.phone_no
-            %td= InsuranceCompany.find(person.insurance_company).name
+            - if person.insurance_company
+              %td= InsuranceCompany.find(person.insurance_company).name

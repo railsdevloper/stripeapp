@@ -31,7 +31,8 @@
         %dd
           = @person.contact_type
         %dt Insurance Company
-        %dd= InsuranceCompany.find(@person.insurance_company).name
+        - if @person.insurance_company
+          %dd= InsuranceCompany.find(@person.insurance_company).name
         %dt Contact Name
         %dd= @person.contact_name
         %dt Address
