@@ -1,0 +1,50 @@
+.main
+  .sidebar
+    .block
+      %h3 Contacts
+      %ul
+        %li
+          = link_to 'Add New Contact', new_person_path(current_subscription.username)
+    .block
+      %h3 Types
+      %dl.stats
+        %dt All
+        %dd
+          = link_to current_subscription.find_people("All"), "#"
+        %dt Customers
+        %dd
+          = link_to current_subscription.find_people("Customer"), "#"
+        %dt Adjusters
+        %dd
+          = link_to current_subscription.find_people("Adjuster"), "#"
+        %dt Technicians
+        %dd
+          = link_to current_subscription.find_people("Technician"), "#"
+  .content
+    = image_tag("heading_contacts.png", :class => "heading")
+    .breadcrumbs
+      %ul
+        %li
+          = link_to "Dashboard", dashboards_path(current_subscription.username)
+          %span.separator /
+        %li
+          = link_to 'Contacts', people_path(current_subscription.username)
+    .block
+      %table
+        %tr
+          %th Contact Type
+          %th Contact Name
+          %th Address
+          %th City
+          %th State
+          %th Phone Number
+          %th Insurance Company
+        - @person.each do |person|
+          %tr
+            %td= person.contact_type
+            %td= person.contact_name
+            %td= person.address
+            %td= person.address
+            %td= person.state
+            %td= person.phone_no
+            %td= InsuranceCompany.find(person.insurance_company).name

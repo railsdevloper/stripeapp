@@ -1,0 +1,5 @@
+= form_for @insurance_company, :remote => true do |f|
+  %p Insurance Company name
+  %p= f.text_field :name
+  = hidden_field_tag "insurance_company[subscription_id]", current_subscription.id
+  = f.submit

@@ -49,6 +49,8 @@ class Subscription < ActiveRecord::Base
 
   belongs_to :plan
   has_many :jobs
+  has_many :insurance_companies
+  has_many :people
 
   cattr_accessor :current_subscription
 
@@ -78,5 +80,11 @@ class Subscription < ActiveRecord::Base
     statuses =  jobs.map(&:statuses).map(&:last)
     statuses.reject!{|status| status.try(:name) != job_status}
   end
+
+  def find_people(type)
+    contact_people = people.find_all_by_contact_type(type)
+    contact_people.try(:size) if contact_people.present?
+  end
+
 
 end

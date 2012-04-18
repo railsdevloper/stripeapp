@@ -15,7 +15,6 @@ class InventoriesController < ApplicationController
     @inventory = Inventory.new(params[:inventory])
     if @inventory.save
       redirect_to "/#{current_subscription.username}/jobs/#{@job.customer_name.gsub(' ', '-')}/inventory/#{@inventory.item_name.gsub(' ', '-')}" 
-#      redirect_to inventory_path(@inventory) 
     else
      render :action => "new"
     end    
@@ -40,7 +39,6 @@ class InventoriesController < ApplicationController
     @job = @inventory.job
     if @inventory.update_attributes(params[:inventory])
       redirect_to "/#{current_subscription.username}/jobs/#{@job.customer_name.gsub(' ', '-')}/inventory/#{@inventory.item_name.gsub(' ', '-')}" 
-#      redirect_to inventory_path(@inventory) 
     else
      render :action => "new"
     end        

@@ -1,0 +1,71 @@
+.main
+  .sidebar
+    .block
+      %h3 Contacts
+      %ul
+        %li
+          %a{:href => "#"} View All Contacts
+    .block
+      %h3 Types
+      %dl.stats
+        %dt All
+        %dd
+          %a{:href => "#"} 5
+        %dt Customers
+        %dd
+          %a{:href => "#"} 2
+        %dt Adjusters
+        %dd
+          %a{:href => "#"} 2
+        %dt Technicians
+        %dd
+          %a{:href => "#"} 1
+  .content
+    = image_tag("heading_contacts.png", :class => "heading")
+    .breadcrumbs
+      %ul
+        %li
+          %a{:href => "#"} Dashboard
+          %span.separator /
+        %li
+          %a{:href => "#"} Contacts
+          %span.separator /
+        %li
+          %a{:href => "#"} Add New Contact
+    .block
+      = form_for @person do |f| 
+        = hidden_field_tag "person[subscription_id]", current_subscription.id
+        %h2 Contact Information
+        %dl
+          %dt Contact Type
+          %dd
+            = f.select :contact_type, "<option>Customer</option><option>Adjuster</option><option>Technician</option>".html_safe
+          %dt Insurance Company
+          %dd
+            = f.select :insurance_company, find_insurance_comp_options(@insurance_companies)
+            %span.form_details
+              = link_to 'Add new', "#", :class => 'add_new_insurance_comp'
+          %dt Contact Name
+          %dd
+            = f.text_field :contact_name
+          %dt Address
+          %dd
+            = f.text_field :address
+          %dt City
+          %dd
+            = f.text_field :city
+          %dt State
+          %dd
+            = f.select :state, options_for_select(['Ohio'])
+          %dt Zip Code
+          %dd
+            = f.text_field :zip_code
+          %dt Phone Number
+          %dd
+            = f.text_field :phone_no
+          %dt Email Address
+          %dd
+            = f.text_field :phone_no
+          %dt
+          %dd            
+            = f.submit
