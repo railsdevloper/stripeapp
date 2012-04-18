@@ -82,8 +82,8 @@ class Subscription < ActiveRecord::Base
   end
 
   def find_people(type)
-    contact_people = people.find_all_by_contact_type(type)
-    contact_people.try(:size) if contact_people.present?
+    contact_people = type == "All" ? people.all : people.find_all_by_contact_type(type)
+    contact_people.try(:size) #if contact_people.present?
   end
 
 

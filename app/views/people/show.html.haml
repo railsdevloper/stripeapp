@@ -10,28 +10,28 @@
       %dl.stats
         %dt All
         %dd
-          %a{:href => "#"} 5
+          = link_to current_subscription.find_people("All").to_s, people_path(current_subscription.username, :type => "All")
         %dt Customers
         %dd
-          %a{:href => "#"} 2
+          = link_to current_subscription.find_people("Customer").to_s, people_path(current_subscription.username, :type => "Customer")
         %dt Adjusters
         %dd
-          %a{:href => "#"} 2
+          = link_to current_subscription.find_people("Adjuster").to_s, people_path(current_subscription.username, :type => "Adjuster")
         %dt Technicians
         %dd
-          %a{:href => "#"} 1
+          = link_to current_subscription.find_people("Technician").to_s, people_path(current_subscription.username, :type => "Technician")
   .content
     = image_tag("heading_contacts.png", :class => "heading")
     .breadcrumbs
       %ul
         %li
-          = link_to "Dashboard", ''
+          = link_to "Dashboard", dashboards_path(current_subscription.username)
           %span.separator /
         %li
-          = link_to 'Contacts', '#'
+          = link_to 'Contacts', people_path(current_subscription.username)
           %span.separator /
         %li
-          = link_to "Steve Jobs", '#'
+          = link_to @person.contact_name, '#'
     .block
       %h2
         Contact Information
