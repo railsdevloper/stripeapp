@@ -29,7 +29,7 @@ class Job < ActiveRecord::Base
   belongs_to :subscription
   has_and_belongs_to_many :statuses
 
-  before_save :set_subscription_id
+  before_save :set_subscription_id, :strip_customer_name
 
   after_save :set_statuses
 
@@ -41,6 +41,10 @@ class Job < ActiveRecord::Base
   def set_statuses
     status_id = Status.find_by_name("Active")
     JobsStatus.create(:job_id => self.try(:id), :status_id => status_id)    
+  end
+  
+  def strip_customer_name
+    self.customer_name = customer_name.gsub("-"," ")
   end
 
 end

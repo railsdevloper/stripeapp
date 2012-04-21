@@ -16,7 +16,6 @@ class InsuranceCompaniesController < ApplicationController
         format.js 
       else
         format.js 
-#        render :action => :new, :layout => false
       end
     end
   end

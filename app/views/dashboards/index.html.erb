@@ -4,7 +4,7 @@
       <h3>Jobs</h3>
       <dl class="stats">
         <dt>All</dt>
-        <dd><a href="#"><%=@subscription.jobs.try(:size)%></a></dd>
+        <dd><a href="#"><%=current_subscription.jobs.all.try(:size)%></a></dd>
         <dt>Active</dt>
         <dd><a href="#"><%=@subscription.jobs_status("Active").try(:size)%></a></dd>
         <dt>Inactive</dt>
@@ -19,37 +19,37 @@
       <h3>People</h3>
       <dl class="stats">
         <dt>All</dt>
-        <dd><a href="#"><%=find_jobs_people(@subscription)%></a></dd>
+        <dd><a href="#"><%=current_subscription.people.all.try(:size)%></a></dd>
         <dt>Customers</dt>
-        <dd><a href="#">4</a></dd>
+        <dd><a href="#"><%=current_subscription.people.find_all_by_contact_type("Customer").try(:size)%></a></dd>
         <dt>Adjusters</dt>
-        <dd><a href="#">2</a></dd>
+        <dd><a href="#"><%=current_subscription.people.find_all_by_contact_type("Adjuster").try(:size)%></a></dd>
         <dt>Technicians</dt>
-        <dd><a href="#">1</a></dd>
+        <dd><a href="#"><%=current_subscription.people.find_all_by_contact_type("Technician").try(:size)%></a></dd>
       </dl>
     </div>
     <div class="block">
       <h3>Inventory</h3>
       <dl class="stats">
         <dt>All</dt>
-        <dd><%=@subscription.jobs.map(&:inventories).try(:size)%></dd>
+        <dd><%=@subscription.jobs.map(&:inventories).flatten.try(:size)%></dd>
         <dt>Packout</dt>
-        <dd>3</dd>
+        <dd><%=@subscription.inventory_status("Packout").try(:size)%></dd>
         <dt>Inspection</dt>
-        <dd>2</dd>
+        <dd><%=@subscription.inventory_status("Inspection").try(:size)%></dd>
         <dt>Processing</dt>
-        <dd>1</dd>
+        <dd><%=@subscription.inventory_status("Processing").try(:size)%></dd>
         <dt>Packback</dt>
-        <dd>4</dd>
+        <dd><%=@subscription.inventory_status("Packback").try(:size)%></dd>
         <dt>Returned</dt>
-        <dd>4</dd>
+        <dd><%=@subscription.inventory_status("Returned").try(:size)%></dd>
         <dt>Disposed</dt>
-        <dd>4</dd>
+        <dd><%=@subscription.inventory_status("Disposed").try(:size)%></dd>
       </dl>
     </div>
   </div>
   <div class="content">
-    <img class="heading" src="images/heading_dashboard.png">
+    <%=image_tag("heading_dashboard.png", :class => "heading")%>
     <div class="block">
       <h2>Plan Information <span class="heading_nav"><a href="#">Edit</a></span></h2>
       <dl>
@@ -58,15 +58,16 @@
         <dt>Monthly Fee</dt>
         <dd>$<%=@subscription.plan.try(:price)%></dd>
         <dt>Payment Date</dt>
-        <dd><%=@subscription.created_at.strftime("%d")%>th of every month</dd>
+        <dd><%=@subscription.created_at.strftime("%d").try(:to_i).try(:ordinalize
+)%> of every month</dd>
         <dt>Jobs this month</dt>
         <dd><%=@subscription.jobs.try(:size)%></dd>
       </dl>
       <h2>Recent Sign Ins</h2>
       <table class="narrow">
         <tr>
-          <td><%=@subscription.last_sign_in_at%></td><!--<td>April 10, 2012 - 12:34 PM</td>-->
-          <td><%=@subscription.first_name%> <%=@subscription.last_name%></td></td>
+          <td><%=@subscription.last_sign_in_at.strftime("%B %d, %Y - %r")%></td>
+          <td><%=@subscription.first_name%> <%=@subscription.last_name%></td>
         </tr>
       </table>
     </div>

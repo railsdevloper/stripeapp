@@ -81,6 +81,11 @@ class Subscription < ActiveRecord::Base
     statuses.reject!{|status| status.try(:name) != job_status}
   end
 
+  def inventory_status(inv_status)
+    statuses =  jobs.map(&:inventories).flatten.map(&:situations).map(&:last)
+    statuses.flatten.reject!{|status| status.try(:name) != inv_status}
+  end
+
   def find_people(type)
     contact_people = type == "All" ? people.all : people.find_all_by_contact_type(type)
     contact_people.try(:size) #if contact_people.present?
