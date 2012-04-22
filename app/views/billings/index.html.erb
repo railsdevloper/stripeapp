@@ -13,8 +13,8 @@
     <%=image_tag("heading_billing.png", :class => "heading")%>
     <div class="breadcrumbs">
       <ul>
-        <li><a href="#">Dashboard</a><span class="separator">/</span></li>
-        <li><a href="#">Billing</a></li>
+        <li><%=link_to 'Dashboard', dashboards_path(current_subscription.username)%><span class="separator">/</span></li>
+        <li><%=link_to 'Billing', billings_path(current_subscription.username)%></li>
     </div>
     <div class="block">
       <table>

@@ -37,13 +37,13 @@
           <li><%= link_to image_tag('nav_jobs.png'), "/#{current_subscription.username}/jobs"%></li> 
           <li><%= link_to image_tag("nav_contacts.png"), people_path(current_subscription.username)%></li>   
           <li><%= link_to image_tag("nav_settings.png"), "#"%></li> 
-          <li><%= link_to image_tag("nav_billing.png"), "/#{current_subscription.username}/billings"%></li> 
+          <li><%= link_to image_tag("nav_billing.png"), billings_path(current_subscription.username)%></li> 
           <li><%= link_to image_tag("nav_signout.png"), destroy_subscription_session_path, :method => :delete%></li>             
         </ul>
       </div>
     </div>
   </div> 
-<% elsif params["plan_id"].blank? && !request.url.include?('/sign_in') && !request.url.include?('/subscriptions')%>
+<% elsif !request.url.include?('/signup') && !request.url.include?('/sign_in') && !request.url.include?('/subscriptions')%>
   <div class="header">
     <div class="container">
       <div class="logo">
@@ -52,7 +52,7 @@
       <div class="navigation">
         <ul>
           <li><%= link_to image_tag("nav_signin.png"), new_session_path(resource_name)%></li>
-          <li><%= link_to image_tag("nav_plans.png"), pricing_plans_path%></li>
+          <li><%= link_to image_tag("nav_plans.png"), pricing_path%></li>
           <li><%= link_to image_tag("nav_tour.png"), root_path%></li>
           <li><%= link_to image_tag("nav_faq.png"), root_path%></li>
           <li><%= link_to image_tag("nav_signup.png"), root_path%></li>

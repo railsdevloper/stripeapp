@@ -4,7 +4,7 @@ class SubscriptionsController < ApplicationController
   skip_before_filter :authenticate_subscription!, :only => [:create, :new]
 
   def new
-    @plan = Plan.find(params[:plan_id])
+    @plan = Plan.find_by_name(params[:plan_name].capitalize)
     @subscription = @plan.subscriptions.build
   end
 
