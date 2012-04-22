@@ -2,8 +2,8 @@
 
 <div class="main">
   <div class="content">
-    <%= image_tag "heading_signup.png" %>
-    <p class="plan_details">You're signing up for the <strong><%=@plan.try(:name)%></strong> plan (<strong>$10</strong> setup fee, <strong>$<%="%.2f" % @plan.try(:price)%></strong> monthly fee). You will be billed on the <strong><%=Time.now.strftime("%d").try(:to_i).try(:ordinalize)%></strong> of every month. You can cancel anytime.</p>
+    <%= image_tag "heading_signup.png", :class => "heading" %>
+    <p class="plan_details">You're signing up for the <strong><%=@plan.try(:name)%></strong> plan (<strong>$199.00</strong> setup fee, <strong>$<%="%.2f" % @plan.try(:price)%></strong> monthly fee). You will be billed on the <strong><%=Time.now.strftime("%d").try(:to_i).try(:ordinalize)%></strong> of every month. You can cancel anytime.</p>
     <%= form_for(@subscription, :url => registration_path(@subscription)) do |f| %>
       <% if @subscription.errors.any? %>
         <div class="error_messages error">
