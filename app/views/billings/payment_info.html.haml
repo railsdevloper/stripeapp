@@ -1,0 +1,37 @@
+.main
+  .sidebar
+    .block
+      %h3 Billing
+      %ul
+        %li
+          = link_to 'Transactions', '#'
+        %li
+          = link_to 'Payment Info', '#'
+        %li
+          = link_to 'Cancel Subscription', '#'
+  .content
+    = image_tag("heading_billing.png", :class => "heading")
+    .breadcrumbs
+      %ul
+        %li
+          = link_to 'Dashboard', '#'
+          %span.separator /
+        %li
+          = link_to 'Billing', '#'
+          %span.separator /
+        %li
+          = link_to 'Payment Information', '#'
+    .block
+      %h2
+        Payment Information
+        %span.heading_nav
+          = link_to 'Edit', '#'
+      %dl
+        %dt Name on Card
+        %dd= current_subscription.cardholder_name
+        %dt Card Type
+        %dd= current_subscription.card_type
+        %dt Card Number
+        %dd= "xxxx xxxx xxxx #{current_subscription.last_four_digit}"
+        %dt Expiration Date
+        %dd= "#{current_subscription.expiration_month}/#{current_subscription.expiration_year}"

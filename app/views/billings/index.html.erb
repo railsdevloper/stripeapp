@@ -4,13 +4,13 @@
       <h3>Billing</h3>
       <ul>
         <li><a href="#">Transactions</a></li>
-        <li><a href="#">Payment Info</a></li>
+        <li><%= link_to 'Payment Info', payment_info_billings_path(current_subscription.username)%></li>
         <li><%= link_to "Cancel Subscription", cancel_subscription_path(@billing)%></li>
       </ul>
     </div>
   </div>
   <div class="content">
-    <img class="heading" src="images/heading_billing.png">
+    <%=image_tag("heading_billing.png", :class => "heading")%>
     <div class="breadcrumbs">
       <ul>
         <li><a href="#">Dashboard</a><span class="separator">/</span></li>
@@ -29,8 +29,8 @@
           <td><%= @billing.created_at%></td>
           <td><%= @billing.card_type%></td>
           <td><%= @billing.plan.name%></td>
-          <td>$<%=@billing.plan.price%></td>
-          <td>Active</td>
+          <td>$<%= "%.2f" % @billing.plan.price%></td>
+          <td>Paid</td>
         </tr>
       </table>
     </div>

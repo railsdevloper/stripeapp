@@ -14,13 +14,18 @@ Saas::Application.routes.draw do
       get 'pricing'
     end
   end
+
+  resources :billings, :path => "/:username/billing" do
+    collection do 
+      get 'payment_info'
+    end
+  end
   
   resources :insurance_companies
   resources :dashboards, :path => "/:username/dashboards"
   resources :inventories, :path => "/:username/inventories"
   resources :jobs, :path => "/:username/jobs" 
   resources :people, :path => "/:username/people"
-  resources :billings, :path => "/:username/billings"
 
   match ":username/jobs/:customer_name/inventory/new" => "inventories#new"
   match ":username/jobs/:customer_name/inventory/:inventory_name" => "inventories#show"

@@ -4,4 +4,7 @@ class BillingsController < ApplicationController
     @billing = current_subscription
   end
 
+  def payment_info
+  end
+
 end

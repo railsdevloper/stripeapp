@@ -66,7 +66,7 @@
         <h2>Billing Information</h2>
         <dl>
           <dt><label>Name on Card</label></dt>
-          <dd><input type="text"></dd>
+          <dd><%= text_field_tag :card_name, nil, name: nil %></dd>
           <dt><label>Card Number</label></dt>
           <dd><%= text_field_tag :card_number, nil, name: nil %></dd>
           <dt><%= label_tag :card_month, "Expiration Date" %></dt>
