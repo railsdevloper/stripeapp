@@ -1,2 +1,2 @@
-Stripe.api_key = "6c42YXvkym6gUvdDpfFRiYCv4Ls0BfCe"
-STRIPE_PUBLIC_KEY = "pk_quRkUHSCoG1ApDUdLXqSXKoF0fMTA"
+Stripe.api_key = "oHzFiMdc8rlh6eaEbVIE93YQhAi4GO0w"
+STRIPE_PUBLIC_KEY = "pk_GkokEwyGUHJyslCh9FXi2Qosty3ck"
