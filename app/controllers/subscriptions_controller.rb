@@ -10,11 +10,11 @@ class SubscriptionsController < ApplicationController
 
   def create
     @subscription = Subscription.new(params[:subscription])
+    @plan = @subscription.plan
     if @subscription.save_with_payment
-      SubscriptionMailer.sign_up(@subscription.email, @subscription.first_name, @subscription.last_name).deliver  
+      SubscriptionMailer.sign_up(@subscription).deliver  
       sign_in(:subscription, @subscription)
       respond_with @subscription, :location => after_sign_in_path_for(@subscription)
-#      redirect_to jobs_path, :notice => "Thank you for subscribing!"
     else
       render :new
     end

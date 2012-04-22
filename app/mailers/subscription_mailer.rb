@@ -1,11 +1,13 @@
 class SubscriptionMailer < ActionMailer::Base
   default from: "from@example.com"
   
-  def sign_up(recipient, first_name, last_name)
+  def sign_up(subscriber)
+    @subscriber = subscriber
+    recipient = subscriber.email
     @subject = "successfully sign up"
-    @first_name = first_name
-    @last_name = last_name
-    mail(:to => "#{recipient}", :subject => "successfully sign up for stripe App")
+    @first_name = subscriber.first_name
+    @last_name = subscriber.last_name
+    mail(:to => "#{recipient}", :subject => "Welcome to Content Tracker!")
   end
     
 end

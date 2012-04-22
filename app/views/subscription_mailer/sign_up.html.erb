@@ -1,3 +1,15 @@
-<h4> Hi <%= "#{@first_name} #{@last_name}"%> </h4>
+<p>Hey <%="#{@first_name}"%>,</p>
 
-<h1>You have Successfully sign up for Contentstracker</h1>
+<p>Welcome to Contents Tracker!</p>
+
+<p>
+You've subscribed to the <%=@subscriber.plan.name%> plan. You'll be able to create <%=Plan::JobLimit[@subscriber.plan.name]%>
+new jobs per month. We'll charge your card $<%= "%.2f" % @subscriber.plan.price %> every month, on the
+<%=@subscriber.created_at.strftime("%d").try(:to_i).try(:ordinalize)%>.
+</p>
+
+<p>You can upgrade, downgrade, or cancel your account at any time.</p>
+
+<p>Regards,<br/>
+The Contents Tracker Team
+</p>

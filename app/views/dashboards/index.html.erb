@@ -56,7 +56,7 @@
         <dt>Plan</dt>
         <dd><%=@subscription.plan.try(:name)%></dd>
         <dt>Monthly Fee</dt>
-        <dd>$<%=@subscription.plan.try(:price)%></dd>
+        <dd>$<%="%.2f" % @subscription.plan.try(:price)%></dd>
         <dt>Payment Date</dt>
         <dd><%=@subscription.created_at.strftime("%d").try(:to_i).try(:ordinalize
 )%> of every month</dd>
