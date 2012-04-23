@@ -29,13 +29,13 @@
   <div class="header">
     <div class="container">
       <div class="logo">
-        <%=image_tag("logo_contentslab.png")%>
+        <%=image_tag("logo_contentstracker.png")%>
       </div>
       <div class="navigation">
         <ul> 
           <li><%= link_to image_tag("nav_dashboard.png"), dashboards_path(current_subscription.username)%></li>  
           <li><%= link_to image_tag('nav_jobs.png'), "/#{current_subscription.username}/jobs"%></li> 
-          <li><%= link_to image_tag("nav_contacts.png"), people_path(current_subscription.username)%></li>   
+          <li><%= link_to image_tag("nav_people.png"), people_path(current_subscription.username)%></li>   
           <li><%= link_to image_tag("nav_settings.png"), "#"%></li> 
           <li><%= link_to image_tag("nav_billing.png"), billings_path(current_subscription.username)%></li> 
           <li><%= link_to image_tag("nav_signout.png"), destroy_subscription_session_path, :method => :delete%></li>             
@@ -47,7 +47,7 @@
   <div class="header">
     <div class="container">
       <div class="logo">
-        <%=image_tag("logo_contentslab.png")%>
+        <%=image_tag("logo_contentstracker.png")%>
       </div>
       <div class="navigation">
         <ul>
@@ -64,7 +64,7 @@
   <div class="header">
     <div class="container">
       <div class="logo">
-        <%=image_tag("logo_contentslab.png")%>
+        <%=image_tag("logo_contentstracker.png")%>
       </div>
       <div class="navigation">
         <ul>
@@ -86,7 +86,7 @@
     <li><a href="/">Home</a></li>
     <li><a href="/terms">Terms</a></li>
     <li><a href="/privacy">Privacy</a></li>
-    <li><%=image_tag("logo_footer_contentslab.png")%></li>
+    <li><%=image_tag("logo_footer_contentstracker.png")%></li>
     <li><a href="/contact">Contact</a></li>
     <li><a href="/twitter">Twitter</a></li>
     <li><a href="/facebook">Facebook</a></li>
