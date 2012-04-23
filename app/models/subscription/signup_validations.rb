@@ -21,7 +21,7 @@ class Subscription < ActiveRecord::Base
 
   validates_length_of :company_addr, :maximum => 63
 
-  validates_format_of :city, :cardholder_name, :with => /^[a-z\-]*$/i, :message => "can only contain letters and hyphens"
+  validates_format_of :city, :cardholder_name, :with => /^[a-z\- ]*$/i, :message => "can only contain letters and hyphens"
 
   validates_length_of :zip_code, :is => 5
 
