@@ -21,7 +21,7 @@ Saas::Application.routes.draw do
   end
   
   resources :insurance_companies
-  resources :dashboards, :path => "/:username/dashboards"
+  resources :dashboards, :path => "/:username/dashboard"
   resources :inventories, :path => "/:username/inventories"
   resources :jobs, :path => "/:username/jobs" 
   resources :people, :path => "/:username/people"
