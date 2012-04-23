@@ -11,7 +11,7 @@ class Subscription < ActiveRecord::Base
                        :uniqueness => true
 #                       :website  => true
 
-  validates_format_of :first_name, :last_name, :with => /^[a-z\-]*$/i, :message => "can only contain letters, and hyphens"
+  validates_format_of :first_name, :last_name, :with => /^[a-z\- ]*$/i, :message => "can only contain letters, and hyphens"
   validates_format_of :first_name, :last_name, :company, :company_addr, :with => /^[^-].*[^-]$/, :message => "cannot start or end with a hyphen"
   validates_length_of :first_name, :last_name, :maximum => 31
 
@@ -25,7 +25,7 @@ class Subscription < ActiveRecord::Base
 
   validates_length_of :zip_code, :is => 5
 
-  validates_format_of :first_name, :last_name, :with => /^[a-z\-]*$/i, :message => "can only contain letters and hyphens"
+  validates_format_of :first_name, :last_name, :with => /^[a-z\- ]*$/i, :message => "can only contain letters and hyphens"
   validates_format_of :first_name, :last_name, :with => /^[^-].*[^-]$/, :message => "cannot start or end with a hyphen"
   validates_length_of :first_name, :last_name, :maximum => 31
 
