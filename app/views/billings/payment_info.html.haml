@@ -8,7 +8,7 @@
         %li
           = link_to 'Payment Info', '#'
         %li
-          = link_to 'Cancel Subscription', '#'
+          = link_to 'Cancel Subscription', cancel_billing_path(current_subscription.username, current_subscription.id, :view => true)
   .content
     = image_tag("heading_billing.png", :class => "heading")
     .breadcrumbs
@@ -20,7 +20,7 @@
           = link_to 'Billing', '#'
           %span.separator /
         %li
-          = link_to 'Payment Information', '#'
+          = link_to 'Payment Information', edit_billing_path(current_subscription.username, current_subscription.id)
     .block
       %h2
         Payment Information

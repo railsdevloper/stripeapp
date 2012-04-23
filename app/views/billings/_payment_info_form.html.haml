@@ -1,0 +1,56 @@
+.main
+  .sidebar
+    .block
+      %h3 Billing
+      %ul
+        %li
+          = link_to 'Transactions', '#'
+        %li
+          = link_to 'Payment Info', '#'
+        %li
+          = link_to 'Cancel Subscription', '#'
+  .content
+    = image_tag("heading_billing", :class => "heading")
+    .breadcrumbs
+      %ul
+        %li
+          = link_to 'Dashboard', dashboards_path(current_subscription.username)
+          %span.separator /
+        %li
+          = link_to 'Billing', billings_path(current_subscription.username)
+          %span.separator /
+        %li
+          = link_to 'Payment Information', payment_info_billings_path(current_subscription.username)
+          %span.separator /
+        %li
+          = link_to 'Update Payment Information', '#'
+    .block
+      %h2 Payment Information
+      = form_for 
+      %dl
+        %dt
+          %label Name on Card
+        %dd
+          %input{:type => "text"}/
+        %dt
+          %label Card Number
+        %dd
+          %input{:type => "text"}/
+        %dt
+          %label Expiration Date
+        %dd
+          %select
+            %option January
+          %select
+            %option 2012
+        %dt
+          %label CVC
+        %dd
+          %input{:type => "text"}/
+        %dt
+          %label Zip Code
+        %dd
+          %input{:type => "text"}/
+        %dt
+        %dd
+          %input{:type => "submit", :value => "Update"}/

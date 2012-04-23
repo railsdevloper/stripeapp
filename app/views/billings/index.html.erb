@@ -6,7 +6,7 @@
         <li><a href="#">Transactions</a></li>
         <li><%= link_to 'Payment Info', payment_info_billings_path(current_subscription.username)%></li>
         <li><a href="#">Plan info</a></li>
-        <li><%= link_to "Cancel Subscription", "#"%></li>
+        <li><%= link_to "Cancel Subscription", cancel_billing_path(current_subscription.username, current_subscription.id, :view => true)%></li>
       </ul>
     </div>
   </div>
