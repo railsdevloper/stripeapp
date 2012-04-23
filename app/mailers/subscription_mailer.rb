@@ -7,7 +7,7 @@ class SubscriptionMailer < ActionMailer::Base
     @subject = "successfully sign up"
     @first_name = subscriber.first_name
     @last_name = subscriber.last_name
-    mail(:to => "#{recipient}", :subject => "Welcome to Content Tracker!")
+    mail(:to => "#{recipient}", :subject => "Welcome to Contents Tracker!")
   end
     
 end
