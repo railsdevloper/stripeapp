@@ -773,3 +773,11 @@ td.total_amount {
     top:-7px;
     right:-7px;
 }
+
+.inventory{
+		border: 1px solid #dddddd;
+		padding: 3px;
+		box-shadow: 0px 0px 2px 1px #eeeeee;
+		vertical-align: middle
+}
+

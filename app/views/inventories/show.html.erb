@@ -60,7 +60,7 @@
           <dt>Notes</dt>
           <dd><%=@inventory.notes%></dd>
           <dt>Packout Image</dt>
-          <dd><%= image_tag(@inventory.avatar.url(:medium)) %></dd>
+          <dd><%= image_tag(@inventory.avatar.url(:medium), :class => 'inventory') %></dd>
         </dl>
       <h2>Status</h2>
         <dl>
