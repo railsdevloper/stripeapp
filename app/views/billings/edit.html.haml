@@ -1,0 +1,55 @@
+.main
+  .sidebar
+    .block
+      %h3 Billing
+      %ul
+        %li
+          = link_to 'Transactions', '#'
+        %li
+          = link_to 'Payment Info', '#'
+        %li
+          = link_to 'Cancel Subscription', '#'
+  .content
+    = image_tag("heading_billing.png", :class => "heading")
+    .breadcrumbs
+      %ul
+        %li
+          = link_to 'Dashboard', dashboards_path(current_subscription.username)
+          %span.separator /
+        %li
+          = link_to 'Billing', billings_path(current_subscription.username)
+          %span.separator /
+        %li
+          = link_to 'Payment Information', payment_info_billings_path(current_subscription.username)
+          %span.separator /
+        %li
+          = link_to 'Update Payment Information', '#'
+    .block
+      %h2 Payment Information
+      = form_tag billing_path(current_subscription.username, current_subscription.id), :method => :put, :id => 'update_form' do
+        = hidden_field_tag "subscription_stripe_card_token"
+        %dl
+          %dt
+            %label Name on Card
+          %dd
+            = text_field_tag :card_name, nil, name: nil
+          %dt
+            %label Card Number
+          %dd
+            = text_field_tag :card_number, nil, name: nil
+          %dt
+            %label Expiration Date
+          %dd
+            = select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"}
+            = select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"}
+          %dt
+            %label CVC
+          %dd
+            = text_field_tag :card_code, nil, name: nil
+          %dt
+            %label Zip Code
+          %dd
+            = text_field_tag "subscription['zip_code']", nil
+          %dt
+          %dd
+            = submit_tag 'Update'

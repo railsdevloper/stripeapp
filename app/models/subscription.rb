@@ -76,6 +76,25 @@ class Subscription < ActiveRecord::Base
     false
   end
 
+  def update_with_payment
+    customer = Stripe::Customer.retrieve(stripe_customer_token) 
+    customer.card = stripe_card_token # obtained with Stripe.js
+    if customer.save
+      self.last_four_digit = customer[:active_card][:last4]
+      self.cardholder_name = customer[:active_card][:name]
+      self.card_type = customer[:active_card][:type]
+      self.expiration_month = customer[:active_card][:exp_month]
+      self.expiration_year = customer[:active_card][:exp_year]
+      self.stripe_customer_token = customer.id
+      self.save(:validate=> false)
+    end
+  rescue Stripe::InvalidRequestError => e
+    logger.error "Stripe error while creating customer: #{e.message}"
+    errors.add :base, "There was a problem with your credit card."
+    false
+  end
+
+
   def jobs_status(job_status)
     statuses =  jobs.map(&:statuses).map(&:last)
     statuses.reject!{|status| status.try(:name) != job_status}

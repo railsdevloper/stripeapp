@@ -25,7 +25,7 @@
       %h2
         Payment Information
         %span.heading_nav
-          = link_to 'Edit', '#'
+          = link_to 'Edit', edit_billing_path(current_subscription.username, current_subscription.id)
       %dl
         %dt Name on Card
         %dd= current_subscription.cardholder_name

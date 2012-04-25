@@ -14,6 +14,7 @@ Saas::Application.routes.draw do
   resources :billings, :path => "/:username/billing" do
     collection do 
       get 'payment_info'
+      get 'plan_info'
     end
     member do 
       get 'cancel'

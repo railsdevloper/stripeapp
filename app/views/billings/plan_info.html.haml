@@ -1,0 +1,38 @@
+.main
+  .sidebar
+    .block
+      %h3 Billing
+      %ul
+        %li
+          %a{:href => "#"} Transactions
+        %li
+          %a{:href => "#"} Payment Info
+        %li
+          %a{:href => "#"} Plan Info
+        %li
+          %a{:href => "#"} Cancel Subscription
+  .content
+    = image_tag("heading_billing", :class => "heading")
+    .breadcrumbs
+      %ul
+        %li
+          %a{:href => "#"} Dashboard
+          %span.separator /
+        %li
+          %a{:href => "#"} Billing
+          %span.separator /
+        %li
+          %a{:href => "#"} Plan Information
+    .block
+      %h2
+        Plan Information
+        %span.heading_nav
+          %a{:href => "#"} Edit
+      %p Your plan has been updated. We have charged your card the $x difference.
+      %dl
+        %dt Plan
+        %dd Plus
+        %dt Monthly Fee
+        %dd $10.00
+        %dt Payment Date
+        %dd 19th of every month

@@ -1,0 +1,37 @@
+.main
+  .sidebar
+    .block
+      %h3 Billing
+      %ul
+        %li
+          %a{:href => "#"} Transactions
+        %li
+          %a{:href => "#"} Payment Info
+        %li
+          %a{:href => "#"} Plan Info
+        %li
+          %a{:href => "#"} Cancel Subscription
+  .content
+    %img.heading{:src => "images/heading_billing.png"}
+      .breadcrumbs
+        %ul
+          %li
+            %a{:href => "#"} Dashboard
+            %span.separator /
+          %li
+            %a{:href => "#"} Billing
+            %span.separator /
+          %li
+            %a{:href => "#"} Plan Information
+      .block
+        %h2 Plan Information
+        %dl
+          %dt Plan
+          %dd
+            %select
+              %option Basic
+              %option Plus
+              %option Pro
+          %dt
+          %dd
+            %input{:type => "submit", :value => "Update Plan"}/

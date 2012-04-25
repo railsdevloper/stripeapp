@@ -16,11 +16,17 @@ class BillingsController < ApplicationController
   end
 
   def edit
-    render 'payment_info_form'
+    @subscription = current_subscription
   end
 
   def update
-    
+    @subscription = Subscription.find(params[:id])
+    @subscription.stripe_card_token = params[:subscription_stripe_card_token]
+    if @subscription.update_with_payment       
+      redirect_to payment_info_billings_path(@subscription.username)
+    else
+      render :edit
+    end
   end
 
 end
