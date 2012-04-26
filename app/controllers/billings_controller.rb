@@ -29,4 +29,33 @@ class BillingsController < ApplicationController
     end
   end
 
+  def plan_info
+    @subscription = current_subscription
+  end
+
+  def plan_edit
+    @subscription = current_subscription
+  end
+
+
+  # Just implemented the payment upgrade in a simple manner, need to refactor this code
+  def plan_update
+    @subscription = current_subscription
+    @new_plan = Plan.find(params[:plan_id])
+    new_plan_price = @new_plan.try(:price)
+    current_plan_price = current_subscription.plan.try(:price)
+    if new_plan_price > current_plan_price
+      if @subscription.upgrade_to_plan(@new_plan)
+        flash[:notice] = "Your plan has been updated. We have charged your card the $#{new_plan_price - current_plan_price} difference."
+        redirect_to plan_info_billings_path(current_subscription.username)        
+      else
+        render :plan_edits
+      end
+    elsif new_plan_price < current_plan_price
+      @subscription.downgrade_to_plan(@new_plan)
+    else
+      redirect_to plan_info_billings_path(current_subscription.username)      
+    end  
+  end
+
 end

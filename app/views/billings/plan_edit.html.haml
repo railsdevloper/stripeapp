@@ -6,32 +6,30 @@
         %li
           %a{:href => "#"} Transactions
         %li
-          %a{:href => "#"} Payment Info
+          = link_to "Plan Info", plan_info_billings_path(current_subscription.username)
         %li
-          %a{:href => "#"} Plan Info
+          = link_to "Plan Info", plan_info_billings_path(current_subscription.username)
         %li
           %a{:href => "#"} Cancel Subscription
   .content
-    %img.heading{:src => "images/heading_billing.png"}
-      .breadcrumbs
-        %ul
-          %li
-            %a{:href => "#"} Dashboard
-            %span.separator /
-          %li
-            %a{:href => "#"} Billing
-            %span.separator /
-          %li
-            %a{:href => "#"} Plan Information
-      .block
-        %h2 Plan Information
+    = image_tag("heading_billing.png", :class => "heading")
+    .breadcrumbs
+      %ul
+        %li
+          %a{:href => "#"} Dashboard
+          %span.separator /
+        %li
+          %a{:href => "#"} Billing
+          %span.separator /
+        %li
+          %a{:href => "#"} Plan Information
+    .block
+      %h2 Plan Information
+      = form_tag plan_update_billing_path(current_subscription.username, @subscription.id), :method => :put do 
         %dl
           %dt Plan
           %dd
-            %select
-              %option Basic
-              %option Plus
-              %option Pro
+            = select_tag "plan_id", options_for_select(Plan.all.collect{|p| [p.name,p.id]})
           %dt
           %dd
-            %input{:type => "submit", :value => "Update Plan"}/
+            = submit_tag 'Update Plan'

@@ -6,7 +6,7 @@
         %li
           = link_to 'Transactions', '#'
         %li
-          = link_to 'Payment Info', '#'
+          = link_to "Plan Info", plan_info_billings_path(current_subscription.username)
         %li
           = link_to 'Cancel Subscription', cancel_billing_path(current_subscription.username, current_subscription.id, :view => true)
   .content

@@ -18,6 +18,8 @@ Saas::Application.routes.draw do
     end
     member do 
       get 'cancel'
+      get 'plan_edit'
+      put 'plan_update'
     end
   end
   

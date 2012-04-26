@@ -8,11 +8,11 @@
         %li
           %a{:href => "#"} Payment Info
         %li
-          %a{:href => "#"} Plan Info
+          = link_to "Plan Info", plan_info_billings_path(current_subscription.username)
         %li
           %a{:href => "#"} Cancel Subscription
   .content
-    = image_tag("heading_billing", :class => "heading")
+    = image_tag("heading_billing.png", :class => "heading")
     .breadcrumbs
       %ul
         %li
@@ -27,12 +27,14 @@
       %h2
         Plan Information
         %span.heading_nav
-          %a{:href => "#"} Edit
-      %p Your plan has been updated. We have charged your card the $x difference.
+          = link_to 'Edit', plan_edit_billing_path(current_subscription.username, @subscription)
+      -#%p Your plan has been updated. We have charged your card the $x difference.
       %dl
         %dt Plan
-        %dd Plus
+        %dd= @subscription.plan.try(:name)
         %dt Monthly Fee
-        %dd $10.00
+        %dd
+          $
+          ="%.2f" % @subscription.plan.try(:price)
         %dt Payment Date
-        %dd 19th of every month
+        %dd= "#{@subscription.created_at.strftime("%d").try(:to_i).try(:ordinalize)} of every month"

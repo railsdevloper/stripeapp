@@ -94,6 +94,17 @@ class Subscription < ActiveRecord::Base
     false
   end
 
+  def upgrade_to_plan(new_plan)
+    new_price = new_plan.try(:price).to_i * 100
+    charge = Stripe::Charge.create(:amount => new_price, :currency => "usd", :customer => self.stripe_customer_token )
+    if charge
+      self.update_attribute(:plan_id, new_plan.id)
+    end
+  rescue Stripe::CardError => e
+    logger.error "Stripe error while charging a customer: #{e.message}"
+    errors.add :base, "There was a problem with your credit card."
+    false      
+  end
 
   def jobs_status(job_status)
     statuses =  jobs.map(&:statuses).map(&:last)
@@ -109,6 +120,5 @@ class Subscription < ActiveRecord::Base
     contact_people = type == "All" ? people.all : people.find_all_by_contact_type(type)
     contact_people.try(:size) #if contact_people.present?
   end
-
 
 end
